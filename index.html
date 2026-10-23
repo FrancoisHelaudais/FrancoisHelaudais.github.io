@@ -350,6 +350,51 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
   .projet:nth-of-type(even) .projet-media { order: 0; }
 }
 
+
+/* ── Projet en cours : badge, chaîne des Grafcets, état d'avancement ── */
+.en-cours { display: inline-block; vertical-align: 6px; margin-left: 8px; font-family: var(--texte); font-size: 12px; color: var(--plan); border: 1.5px solid var(--plan); background: var(--teinte); padding: 1px 8px; }
+.chaine { list-style: none; display: flex; gap: 26px; margin-top: 22px; max-width: 820px; }
+.chaine li { position: relative; border: 1.5px solid var(--plan); padding: 6px 10px 7px; font-size: 13.5px; line-height: 1.35; background: var(--papier); flex: 1 1 0; min-width: 0; }
+.chaine li b { display: block; font-family: var(--lettrage); font-weight: 400; font-size: 15px; color: var(--plan); }
+.chaine li + li::before { content: ''; position: absolute; left: -24px; top: 50%; width: 20px; border-top: 1.5px solid var(--plan); }
+.chaine li + li::after { content: ''; position: absolute; left: -9px; top: 50%; margin-top: -4px; border-left: 7px solid var(--plan); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+.chaine li.sync + li::before { border-top-style: dashed; }
+.chaine li.sync + li::after { display: none; }
+.etat { margin-top: 22px; max-width: 760px; display: grid; gap: 8px; }
+.etat p { padding-left: 14px; border-left: 3px solid var(--plan); font-size: 14.5px; }
+.etat b { display: block; font-family: var(--lettrage); font-weight: 400; font-size: 16px; color: var(--plan); }
+.etat p.suite { border-left-style: dashed; }
+@media (max-width: 900px) {
+  .chaine { gap: 22px; flex-direction: column; }
+  .chaine li { max-width: none; }
+  .chaine li + li::before { left: 22px; top: -20px; width: 0; height: 18px; border-top: 0; border-left: 1.5px solid var(--plan); }
+  .chaine li.sync + li::before { border-top: 0; border-left-style: dashed; }
+  .chaine li + li::after { left: 18px; top: -6px; margin-top: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 7px solid var(--plan); border-bottom: 0; }
+}
+
+
+
+
+/* ── Compétences du BUT mobilisées par un projet ── */
+.but { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 10px; }
+.but li { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; padding: 2px 9px 3px 7px; border: 1px solid var(--plan); color: var(--plan); background: var(--papier); }
+.but li::before { content: ''; width: 10px; height: 10px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+.but .concevoir { --c: #e30613; } .but .verifier { --c: #f4a46a; } .but .maintenir { --c: #f2c200; } .but .integrer { --c: #00a651; } .but .manager { --c: #e9a6d6; }
+
+/* ── Documents d'un projet : la preuve ── */
+.docs { margin-top: 26px; max-width: 760px; }
+.docs h4 { font-family: var(--lettrage); font-weight: 400; font-size: 19px; color: var(--plan); margin-bottom: 6px; }
+.docs ul { list-style: none; border-top: 1.5px solid var(--plan); }
+.docs li { border-bottom: 1px solid var(--plan); }
+.docs a { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; column-gap: 12px; align-items: start; padding: 10px 6px; text-decoration: none; color: var(--encre); }
+.docs a::before { content: ''; grid-row: span 2; width: 15px; height: 19px; margin-top: 2px; border: 1.5px solid var(--plan); background: linear-gradient(225deg, var(--plan) 0 4px, var(--papier) 4px); }
+.docs a:hover { background: var(--teinte-2); }
+.docs a:hover .doc-titre { color: var(--plan); text-decoration: underline; text-underline-offset: 3px; }
+.doc-titre { font-family: var(--lettrage); font-size: 17px; line-height: 1.25; }
+.doc-info { font-size: 13px; color: var(--annot); white-space: nowrap; }
+.doc-preuve { grid-column: 2 / -1; font-size: 13.5px; color: var(--annot); }
+@media (max-width: 560px) { .docs a { grid-template-columns: 22px minmax(0, 1fr); } .doc-info { grid-column: 2; } }
+
 @media print {
   .barre nav, .actions, summary { display: none; }
   details > .detail { display: grid; }
@@ -437,6 +482,57 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
     <p>Projets menés en BUT GEII et au D.U. Intelligence Artificielle. Les cotes donnent les résultats mesurés lors des essais de validation.</p>
   </div>
 
+  <article class="projet" id="sae">
+    <figure class="projet-media">
+      <a href="photos/sae-magasin.jpg"><img src="photos/sae-magasin.jpg" width="1600" height="1200" loading="lazy" alt="Magasin de stockage de la station Festo : étagères de supports de coques, axe de préhension en haut et palette sur le convoyeur en bas."></a>
+      <figcaption>Le magasin de stockage et le bras de préhension</figcaption>
+    </figure>
+    <div>
+      <h3>Poste automatisé de chargement et déchargement <span class="en-cours">En cours</span></h3>
+      <p class="contexte">2026, SAE de 3<sup>e</sup> année en équipe, plateforme Festo CP Lab</p>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li></ul>
+      <p class="resume">Une station qui range des coques dans un magasin ou les en ressort, selon ce qui arrive sur la palette. Le convoyeur amène la palette sous un bras robot cartésien, qui fait le transfert. Deux automates se partagent le poste : un ET 200SP (CPU 1512SP) pour la station et le convoyeur, un S7-1200 (CPU 1214C) pour le robot, qui échangent leurs données en iDevice sur PROFINET.</p>
+      <p class="resume">Dans l'équipe, je conçois les Grafcets du poste, en niveaux 1 et 2, puis je les traduis en Ladder.</p>
+      <ol class="chaine" aria-label="Hiérarchie des Grafcets du poste">
+        <li><b>Sécurité</b>Arrêt d'urgence, force la conduite</li>
+        <li><b>Conduite</b>Modes automatique, semi-manuel et manuel</li>
+        <li class="sync"><b>Production station</b>Convoyeur et palette</li>
+        <li><b>Production robot</b>Transferts magasin et palette</li>
+      </ol>
+      <div class="etat">
+        <p><b>Fait</b>Grafcets de conduite, de production de la station et du robot, et de prise d'origine du robot, en niveaux 1 et 2. Table des variables des deux automates.</p>
+        <p class="suite"><b>En cours</b>Programmation en Ladder et essais sur la station.</p>
+      </div>
+      <details>
+        <summary>Cahier des charges et choix de conception</summary>
+        <div class="detail">
+          <div>
+            <h4>Cahier des charges</h4>
+            <ul>
+              <li>Palette vide : le robot y dépose une coque prise dans le magasin. Coque assemblée : elle est rangée en stock.</li>
+              <li>Un seul appui sur Start lance la production automatique.</li>
+              <li>Défaut signalé si le magasin est vide pour un déchargement, ou plein pour un chargement.</li>
+              <li>Prise d'origine du robot après une mise sous tension ou un Reset.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Choix de conception</h4>
+            <ul>
+              <li>Grafcets hiérarchisés : la sécurité force la conduite, qui maintient la production à son étape initiale tant que le poste n'est pas prêt.</li>
+              <li>Station et robot synchronisés par une demande et un signal de fin de séquence, échangés entre les deux automates.</li>
+              <li>Pince et vérin commandés en actions mémorisées, pour que la pince ne lâche pas la coque au changement d'étape.</li>
+              <li>En Ladder, chaque transition active l'étape suivante et désactive la précédente, dans un seul réseau.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Matériel et outils</h4>
+            <p class="outils">ET 200SP CPU 1512SP, S7-1200 CPU 1214C, iDevice PROFINET, axes X et Z motorisés, vérin et pince pneumatiques, convoyeur Festo, TIA Portal, Ladder.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </article>
+
   <article class="projet" id="mugochaud">
     <figure class="projet-media">
       <a href="photos/mugochaud-1.jpg"><img src="photos/mugochaud-1.jpg" width="1200" height="1600" loading="lazy" alt="Enceinte chauffante en bois avec sa porte et ses électro-aimants de verrouillage."></a>
@@ -444,7 +540,8 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
     </figure>
     <div>
       <h3>Mugochaud, enceinte chauffante régulée</h3>
-      <p class="contexte">2025, en binôme, BUT GEII</p>
+      <p class="contexte">2026, BUT GEII 2<sup>e</sup> année, en binôme</p>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="verifier">Vérifier</li><li class="integrer">Intégrer</li><li class="manager">Manager</li></ul>
       <p class="resume">Une enceinte qui chauffe et maintient un mug à 50 °C, pilotée par un automate Siemens S7-1200. J'ai câblé la partie puissance de l'armoire, programmé en SCL les Grafcets de sécurité et de production, et calculé sous Matlab le correcteur PI de la régulation.</p>
       <div class="cotes">
         <div class="cote"><span class="valeur">6 min 20 s</span><span class="ligne"></span><span class="sens">pour atteindre 50 °C, objectif sous 10 min</span></div>
@@ -516,6 +613,13 @@ END_IF;</code></pre>
           </div>
         </div>
       </details>
+      <div class="docs">
+        <h4>Documents du projet</h4>
+        <ul>
+          <li><a href="documents/mugochaud-dossier-conception.pdf"><span class="doc-titre">Dossier de conception (DDC)</span><span class="doc-info">PDF, 26 pages</span><span class="doc-preuve">Concevoir : analyse du cahier des charges, choix des composants, calcul du correcteur PI. Rédigé en binôme.</span></a></li>
+          <li><a href="documents/mugochaud-dossier-verification.pdf"><span class="doc-titre">Dossier de vérification (DDV)</span><span class="doc-info">PDF, 16 pages</span><span class="doc-preuve">Vérifier : six essais définis à partir du cahier des charges, résultats mesurés, produit déclaré conforme.</span></a></li>
+        </ul>
+      </div>
     </div>
   </article>
 
@@ -526,7 +630,8 @@ END_IF;</code></pre>
     </figure>
     <div>
       <h3>Robot Mini-Sumo autonome</h3>
-      <p class="contexte">2025, équipe de cinq, Tournoi National de Robotique Sumo</p>
+      <p class="contexte">2025 à 2026, BUT GEII 2<sup>e</sup> année, équipe de cinq, Tournoi National de Robotique Sumo</p>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="verifier">Vérifier</li><li class="manager">Manager</li></ul>
       <p class="resume">Un robot de combat qui repère son adversaire aux ultrasons et le pousse hors de l'arène, dans un format imposé. J'ai rédigé les protocoles des dossiers de vérification et de fabrication, mené les essais mécaniques et validé la coupure de sécurité de la batterie.</p>
       <div class="cotes">
         <div class="cote"><span class="valeur">99,98 mm</span><span class="ligne"></span><span class="sens">largeur hors tout, limite 100 mm</span></div>
@@ -562,6 +667,12 @@ END_IF;</code></pre>
           </div>
         </div>
       </details>
+      <div class="docs">
+        <h4>Documents du projet</h4>
+        <ul>
+          <li><a href="documents/mini-sumo-dossier-fabrication.pdf"><span class="doc-titre">Dossier de fabrication (DDF)</span><span class="doc-info">PDF, 11 pages</span><span class="doc-preuve">Concevoir : fabrication du robot à partir du dossier de conception, rédigé en équipe.</span></a></li>
+        </ul>
+      </div>
     </div>
   </article>
 
@@ -572,7 +683,8 @@ END_IF;</code></pre>
     </figure>
     <div>
       <h3>Kart à hélice télécommandé en infrarouge</h3>
-      <p class="contexte">2025, équipe de huit, BUT GEII</p>
+      <p class="contexte">2025, BUT GEII 1<sup>re</sup> année, équipe de huit</p>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="verifier">Vérifier</li><li class="manager">Manager</li></ul>
       <p class="resume">Un kart miniature propulsé par une hélice, piloté par une télécommande infrarouge qui encode direction et vitesse selon le protocole NEC. J'ai conçu sous ARES l'architecture de la carte récepteur, vérifié l'intégration mécanique et mené les mesures à l'oscilloscope.</p>
       <div class="cotes">
         <div class="cote"><span class="valeur">423 min</span><span class="ligne"></span><span class="sens">d'autonomie au minimum pour l'émetteur</span></div>
@@ -596,6 +708,14 @@ END_IF;</code></pre>
           </div>
         </div>
       </details>
+      <div class="docs">
+        <h4>Documents du projet</h4>
+        <ul>
+          <li><a href="documents/kart-dossier-conception.pdf"><span class="doc-titre">Dossier de conception (DDC)</span><span class="doc-info">PDF, 85 pages</span><span class="doc-preuve">Concevoir : architecture de l'émetteur et du récepteur, choix justifiés face au cahier des charges. Rédigé en équipe.</span></a></li>
+          <li><a href="documents/kart-dossier-fabrication-recepteur.pdf"><span class="doc-titre">Dossier de fabrication du récepteur (DDF)</span><span class="doc-info">PDF, 11 pages</span><span class="doc-preuve">Concevoir : fabrication de la carte récepteur, co-rédigé.</span></a></li>
+          <li><a href="documents/kart-dossier-fabrication-emetteur.pdf"><span class="doc-titre">Dossier de fabrication de l'émetteur (DDF)</span><span class="doc-info">PDF, 13 pages</span><span class="doc-preuve">Concevoir : fabrication de la télécommande, co-rédigé.</span></a></li>
+        </ul>
+      </div>
     </div>
   </article>
 
@@ -607,6 +727,7 @@ END_IF;</code></pre>
     <div>
       <h3>Robot guidé par une caméra Wi-Fi</h3>
       <p class="contexte">2025, BUT GEII</p>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li></ul>
       <p class="resume">La caméra n'est pas sur le robot : elle filme l'arène, repère le robot et sa cible, et envoie leurs positions en UDP sur le réseau Wi-Fi. J'ai écrit en C++ pour l'ESP32 deux bibliothèques, l'une pour le déplacement, l'autre pour calculer l'angle à corriger à partir de ces données.</p>
       <details>
         <summary>Code de pilotage</summary>
@@ -709,13 +830,13 @@ void loop() { lire_tram_reseau(); }</code></pre>
       </div>
     </li>
     <li class="g-transition"><div class="g-col"><span class="g-barre"></span></div><p class="g-cond">Convention de stage signée</p></li>
-    <li class="g-etape">
+    <li class="g-etape" id="stage">
       <div class="g-col"><span class="g-num">2</span></div>
       <div class="g-action">
         <p class="g-date">Avril à juillet 2026</p>
         <h3>Stage au pôle vidéosurveillance</h3>
         <p class="ou">ENSIO, Bassens</p>
-        <p>Stage de 2<sup>e</sup> année, dans une activité lancée sur le site en janvier 2026 : déploiement de systèmes de vidéosurveillance en entreprise.</p>
+        <p>Stage de 2<sup>e</sup> année, dans une activité lancée sur le site en janvier 2026. Mission : étude comparative de la détection d'objets personnalisée par IA sur des caméras IP de quatre marques (i-PRO, Hanwha, Pelco, Axis), et de leur intégration dans le logiciel de supervision vidéo Genetec Security Center.</p>
       </div>
     </li>
     <li class="g-transition"><div class="g-col"><span class="g-barre"></span></div><p class="g-cond">Contrat d'alternance signé</p></li>
