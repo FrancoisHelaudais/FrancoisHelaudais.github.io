@@ -327,7 +327,8 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 .projet:nth-of-type(even) .projet-media { order: 2; }
 .projet-media img { aspect-ratio: 4 / 3; }
 #mugochaud .projet-media img, #kart .projet-media img, #vision .projet-media img { aspect-ratio: 4 / 4.4; }
-.projet#ia { grid-template-columns: var(--col) minmax(0, 1fr); }
+.projet#ia { grid-template-columns: 380px minmax(0, 1fr); }
+.projet#ia > div { grid-column: 2; }
 
 /* ── Un seul mouvement : les repères de la photo se tracent au chargement ── */
 @media (prefers-reduced-motion: no-preference) {
@@ -346,6 +347,7 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 /* ── Petits écrans ── */
 @media (max-width: 900px) {
   .projet, .projet:nth-of-type(even), .projet#ia { grid-template-columns: minmax(0, 1fr); }
+  .projet#ia > div { grid-column: auto; }
   .cotes { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
   .projet:nth-of-type(even) .projet-media { order: 0; }
 }
@@ -527,11 +529,11 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
     <div class="garde-vue">
       <figure>
         <div class="vue hero-ia">
-          <img src="photos/stage-ipro-detection.jpg" width="1017" height="568" alt="Image d'une caméra i-PRO pendant le stage : deux extincteurs détectés par le modèle que j'ai entraîné, à 62 et 64 % de confiance, et une personne détectée à 99 %." fetchpriority="high">
-          <svg viewBox="0 0 1017 568" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <g class="repere"><line x1="592" y1="100" x2="430" y2="70"/><circle class="point" cx="592" cy="100" r="8"/><circle class="bulle" cx="430" cy="70" r="30"/><text x="430" y="72">1</text></g>
-            <g class="repere"><line x1="540" y1="400" x2="380" y2="470"/><circle class="point" cx="540" cy="400" r="8"/><circle class="bulle" cx="380" cy="470" r="30"/><text x="380" y="472">2</text></g>
-            <g class="repere"><line x1="650" y1="230" x2="748" y2="300"/><circle class="point" cx="650" cy="230" r="8"/><circle class="bulle" cx="748" cy="300" r="30"/><text x="748" y="302">3</text></g>
+          <img src="photos/stage-ipro-hero.jpg" width="742" height="568" alt="Image d'une caméra i-PRO pendant le stage : deux extincteurs détectés par le modèle que j'ai entraîné, à 62 et 64 % de confiance, et une personne détectée à 99 %." fetchpriority="high">
+          <svg viewBox="0 0 742 568" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g class="repere"><line x1="317" y1="100" x2="155" y2="70"/><circle class="point" cx="317" cy="100" r="8"/><circle class="bulle" cx="155" cy="70" r="30"/><text x="155" y="72">1</text></g>
+            <g class="repere"><line x1="265" y1="400" x2="145" y2="470"/><circle class="point" cx="265" cy="400" r="8"/><circle class="bulle" cx="145" cy="470" r="30"/><text x="145" y="472">2</text></g>
+            <g class="repere"><line x1="375" y1="230" x2="473" y2="300"/><circle class="point" cx="375" cy="230" r="8"/><circle class="bulle" cx="473" cy="300" r="30"/><text x="473" y="302">3</text></g>
           </svg>
         </div>
         <figcaption>
@@ -599,7 +601,7 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 
   <article class="projet" id="stage">
     <figure class="projet-media">
-      <a href="photos/stage-hanwha-canettes.jpg"><img src="photos/stage-hanwha-canettes.jpg" width="504" height="600" loading="lazy" alt="Logiciel WiseDetector : une canette encadrée pour l'apprentissage d'une nouvelle classe."></a>
+      <a href="photos/stage-hanwha-canettes.jpg"><img src="photos/stage-hanwha-canettes.jpg" width="720" height="540" loading="lazy" alt="Logiciel WiseDetector : une canette encadrée pour l'apprentissage d'une nouvelle classe."></a>
       <figcaption>Apprentissage d'une canette sous WiseDetector (Hanwha). La détection i-PRO est en photo d'ouverture.</figcaption>
     </figure>
     <div>
@@ -968,8 +970,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
   </article>
 
   <article class="projet" id="ia">
-    <div class="projet-media" aria-hidden="true"></div>
-    <div>
+        <div>
       <h3>Classification de joueurs de rugby par IA</h3>
       <p class="contexte">D.U. Intelligence Artificielle, parcours d'excellence</p>
       <p class="resume">Un outil d'aide à la décision qui classe des joueurs de rugby à partir de leurs statistiques de match. J'ai préparé et nettoyé les données, entraîné le modèle en Python avec PyTorch et scikit-learn, puis évalué ses performances.</p>
@@ -1278,10 +1279,10 @@ void loop() { lire_tram_reseau(); }</code></pre>
     <thead><tr><th scope="col">Domaine</th><th scope="col">Outils et notions</th></tr></thead>
     <tbody>
       <tr><th scope="row">Automatisme</th><td>TIA Portal (Siemens S7-1200), Grafcet, Ladder, SCL, régulation PI et PID, programmation IHM</td></tr>
-      <tr><th scope="row">Réseaux et sûreté<span class="note">en cours d'apprentissage, en alternance</span></th><td>Vidéosurveillance IP, contrôle d'accès, protection périmétrique, réseaux IP</td></tr>
+      <tr><th scope="row">Réseaux et sûreté<span class="note">stage et alternance</span></th><td>Caméras IP i-PRO et Hanwha, IA embarquée (AI On-site Learning, WiseDetector), Genetec Security Center, VLAN, PoE, adressage IP, synoptiques réseau sous draw.io</td></tr>
       <tr><th scope="row">Électronique</th><td>Conception de PCB (KiCad, Proteus ISIS et ARES), câblage de puissance, soudure, mesures à l'oscilloscope et au multimètre</td></tr>
       <tr><th scope="row">Informatique</th><td>C et C++ (Arduino, ESP32), Python, PyTorch, scikit-learn, Matlab</td></tr>
-      <tr><th scope="row">Maintenance</th><td>Analyse de dysfonctionnement, diagnostic électrique, résolution de pannes, documentation technique</td></tr>
+      <tr><th scope="row">Maintenance</th><td>Diagnostic électrique et réseau (PoE, ARP, adresse par défaut), recherche de cause racine, documentation technique</td></tr>
       <tr><th scope="row">Langues</th><td>Français, langue maternelle. Anglais, niveau B2 technique.</td></tr>
     </tbody>
   </table>
