@@ -253,14 +253,6 @@ pre {
 .contact ul { list-style: none; margin-top: 18px; display: grid; gap: 4px; }
 .contact .apart { margin-top: 26px; color: var(--annot); max-width: 40em; }
 
-/* ── Révisions ── */
-.revisions { width: 100%; border-collapse: collapse; margin-top: 72px; font-size: 13.5px; border: 2px solid var(--plan); }
-.revisions caption { color: var(--plan); text-align: left; font-family: var(--lettrage); font-size: 19px; padding-bottom: 8px; }
-.revisions th, .revisions td { border: var(--fin) solid var(--plan); padding: 6px 12px; text-align: left; vertical-align: top; }
-.revisions thead th { font-weight: 400; color: var(--plan); background: var(--teinte); }
-.revisions td:first-child { width: 70px; font-family: var(--lettrage); font-size: 16px; }
-.revisions td:nth-child(2) { width: 150px; white-space: nowrap; }
-
 footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
 /* ── Petits écrans ── */
@@ -286,7 +278,6 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
   .nomenclature thead { display: none; }
   .nomenclature tbody th { border-bottom: 0; padding-bottom: 0; }
   .nomenclature td { border-top: 0; }
-  .revisions td:nth-child(2) { white-space: normal; width: auto; }
 }
 
 /* ── Parcours en Grafcet ──
@@ -436,7 +427,6 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
       <div class="lbl">Auteur</div><div class="large val">François Helaudais</div>
       <div class="lbl">Poste</div><div class="large val">Technicien réseaux en alternance</div>
       <div class="lbl">Formation</div><div class="large val">BUT GEII 3, IUT de Bordeaux</div>
-      <div class="lbl">Échelle</div><div class="val">1:1</div><div class="lbl">Indice</div><div class="val">B</div>
     </div>
   </div>
 </div>
@@ -777,15 +767,6 @@ void loop() { lire_tram_reseau(); }</code></pre>
       <p class="apart">En dehors du travail : guitare en autodidacte depuis 2023, cuisine asiatique et européenne, pêche en surfcasting.</p>
     </div>
   </div>
-
-  <table class="revisions">
-    <caption>Révisions</caption>
-    <thead><tr><th scope="col">Indice</th><th scope="col">Date</th><th scope="col">Modification</th></tr></thead>
-    <tbody>
-      <tr><td>A</td><td>Mai 2026</td><td>Première version du portfolio.</td></tr>
-      <tr><td>B</td><td>Octobre 2026</td><td>Alternance chez Ensio Sud, passage en 3<sup>e</sup> année, nouvelle mise en page et nouveau CV.</td></tr>
-    </tbody>
-  </table>
 </section>
 
 </main>
