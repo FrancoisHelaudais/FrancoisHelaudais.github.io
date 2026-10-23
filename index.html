@@ -454,6 +454,25 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
   .onglet-nom { font-size: 18px; }
 }
 
+
+/* ── Synoptique anonymisé (alternance) ── */
+.synoptique-cadre { border: var(--fin) solid var(--plan); background: var(--papier); background-image: linear-gradient(rgba(29,67,150,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(29,67,150,0.05) 1px, transparent 1px); background-size: 19px 19px; }
+.synoptique { display: block; width: 100%; height: auto; }
+.synoptique .s-cadre { fill: none; stroke: var(--plan); stroke-width: 1.5; }
+.synoptique .s-boite { fill: var(--papier); stroke: var(--plan); stroke-width: 1; }
+.synoptique .s-coeur { fill: var(--plan); }
+.synoptique .s-zone { fill: var(--papier); stroke: var(--plan); stroke-width: 1.2; }
+.synoptique .s-zone.nouv { fill: var(--teinte); stroke-dasharray: 4 2; }
+.synoptique .s-lien { stroke: var(--plan); stroke-width: 1.2; }
+.synoptique text { font-family: var(--texte); fill: var(--encre); }
+.synoptique .s-titre { font-family: var(--lettrage); font-size: 13px; fill: var(--plan); }
+.synoptique .s-lab { font-family: var(--lettrage); font-size: 12px; }
+.synoptique .s-lab.inv { fill: var(--papier); }
+.synoptique .s-sub { font-size: 9.5px; fill: var(--annot); }
+.synoptique .s-cam { font-size: 11px; fill: var(--cuivre); }
+
+.ac-niv { display: block; font-family: var(--texte); font-size: 11.5px; color: var(--annot); margin-top: 2px; }
+
 @media print {
   .barre nav, .actions, summary { display: none; }
   details > .detail { display: grid; }
@@ -496,7 +515,7 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
       </div>
       <div class="garde-notes">
         <p>Contact</p>
-        <p><a href="mailto:f.helaudais@etu.u-bordeaux.fr">f.helaudais@etu.u-bordeaux.fr</a><br>
+        <p><a href="mailto:fififi33160@gmail.com">fififi33160@gmail.com</a><br>
         <a href="tel:+33768941054">07 68 94 10 54</a><br>
         <a href="https://www.linkedin.com/in/francois-helaudais">LinkedIn</a></p>
       </div>
@@ -539,8 +558,104 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 <section class="bloc" id="projets" aria-labelledby="t-projets">
   <div class="bloc-tete">
     <h2 id="t-projets">Projets</h2>
-    <p>Projets menés en BUT GEII et au D.U. Intelligence Artificielle. Les cotes donnent les résultats mesurés lors des essais de validation.</p>
+    <p>Du plus récent au plus ancien : en entreprise, puis à l'IUT. Les cotes donnent les résultats mesurés ou les chiffres clés de chaque projet.</p>
   </div>
+
+  <article class="projet" id="alternance">
+    <figure class="projet-media">
+      <div class="synoptique-cadre"><svg class="synoptique" viewBox="0 0 380 470" role="img" aria-labelledby="syn-t syn-d"><title id="syn-t">Synoptique réseau simplifié</title><desc id="syn-d">Tête de réseau avec onduleur, deux enregistreurs et serveur, reliée à un switch cœur qui dessert dix switchs PoE de zone, soit 61 caméras au total. Quatre switchs existants, six nouveaux.</desc><rect x="20" y="14" width="340" height="92" class="s-cadre"/><text x="30" y="31" class="s-titre">Tête de réseau, local technique</text><rect x="30" y="42" width="74" height="40" class="s-boite"/><text x="67" y="59" class="s-lab" text-anchor="middle">Onduleur</text><text x="67" y="74" class="s-sub" text-anchor="middle">230 V</text><rect x="112" y="42" width="74" height="40" class="s-boite"/><text x="149" y="59" class="s-lab" text-anchor="middle">Enregistreur</text><text x="149" y="74" class="s-sub" text-anchor="middle">32 voies</text><rect x="194" y="42" width="74" height="40" class="s-boite"/><text x="231" y="59" class="s-lab" text-anchor="middle">Enregistreur</text><text x="231" y="74" class="s-sub" text-anchor="middle">64 voies</text><rect x="276" y="42" width="74" height="40" class="s-boite"/><text x="313" y="59" class="s-lab" text-anchor="middle">Serveur</text><text x="313" y="74" class="s-sub" text-anchor="middle">VMS</text><text x="30" y="98" class="s-sub">VLAN dédié, adressage statique</text><line x1="190.0" y1="106" x2="190.0" y2="128" class="s-lien"/><rect x="120.0" y="128" width="140" height="30" class="s-coeur"/><text x="190.0" y="148" class="s-lab inv" text-anchor="middle">Switch cœur managé</text><line x1="260.0" y1="143" x2="300" y2="143" class="s-lien"/><rect x="300" y="128" width="60" height="30" class="s-boite"/><text x="330" y="141" class="s-lab" text-anchor="middle">Poste</text><text x="330" y="153" class="s-sub" text-anchor="middle">sécurité</text><line x1="190.0" y1="158" x2="190.0" y2="410" class="s-lien"/><line x1="190.0" y1="195" x2="160" y2="195" class="s-lien"/><rect x="30" y="180" width="130" height="30" class="s-zone"/><text x="38" y="199" class="s-lab">Zone 1</text><text x="152" y="199" class="s-cam" text-anchor="end">8 cam.</text><line x1="190.0" y1="195" x2="220" y2="195" class="s-lien"/><rect x="220" y="180" width="130" height="30" class="s-zone"/><text x="228" y="199" class="s-lab">Zone 2</text><text x="342" y="199" class="s-cam" text-anchor="end">1 cam.</text><line x1="190.0" y1="243" x2="160" y2="243" class="s-lien"/><rect x="30" y="228" width="130" height="30" class="s-zone"/><text x="38" y="247" class="s-lab">Zone 3</text><text x="152" y="247" class="s-cam" text-anchor="end">7 cam.</text><line x1="190.0" y1="243" x2="220" y2="243" class="s-lien"/><rect x="220" y="228" width="130" height="30" class="s-zone"/><text x="228" y="247" class="s-lab">Zone 4</text><text x="342" y="247" class="s-cam" text-anchor="end">8 cam.</text><line x1="190.0" y1="291" x2="160" y2="291" class="s-lien"/><rect x="30" y="276" width="130" height="30" class="s-zone nouv"/><text x="38" y="295" class="s-lab">Zone 5</text><text x="152" y="295" class="s-cam" text-anchor="end">15 cam.</text><line x1="190.0" y1="291" x2="220" y2="291" class="s-lien"/><rect x="220" y="276" width="130" height="30" class="s-zone nouv"/><text x="228" y="295" class="s-lab">Zone 6</text><text x="342" y="295" class="s-cam" text-anchor="end">5 cam.</text><line x1="190.0" y1="339" x2="160" y2="339" class="s-lien"/><rect x="30" y="324" width="130" height="30" class="s-zone nouv"/><text x="38" y="343" class="s-lab">Zone 7</text><text x="152" y="343" class="s-cam" text-anchor="end">4 cam.</text><line x1="190.0" y1="339" x2="220" y2="339" class="s-lien"/><rect x="220" y="324" width="130" height="30" class="s-zone nouv"/><text x="228" y="343" class="s-lab">Zone 8</text><text x="342" y="343" class="s-cam" text-anchor="end">6 cam.</text><line x1="190.0" y1="387" x2="160" y2="387" class="s-lien"/><rect x="30" y="372" width="130" height="30" class="s-zone nouv"/><text x="38" y="391" class="s-lab">Zone 9</text><text x="152" y="391" class="s-cam" text-anchor="end">5 cam.</text><line x1="190.0" y1="387" x2="220" y2="387" class="s-lien"/><rect x="220" y="372" width="130" height="30" class="s-zone nouv"/><text x="228" y="391" class="s-lab">Zone 10</text><text x="342" y="391" class="s-cam" text-anchor="end">2 cam.</text><rect x="30" y="430" width="14" height="10" class="s-zone"/><text x="50" y="439" class="s-sub">Switch PoE existant</text><rect x="200" y="430" width="14" height="10" class="s-zone nouv"/><text x="220" y="439" class="s-sub">Switch PoE à fournir</text><text x="30" y="460" class="s-sub">Liaisons cuivre Cat 6, moins de 100 m, caméras alimentées en PoE</text></svg></div>
+      <figcaption>Synoptique simplifié et anonymisé : le nom du site et le plan d'adressage sont masqués.</figcaption>
+    </figure>
+    <div>
+      <h3>Avant-projet de vidéoprotection IP pour un marché public <span class="en-cours">Alternance</span></h3>
+      <p class="contexte">Septembre 2026, Ensio Sud, Bassens, BUT GEII 3<sup>e</sup> année</p>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="integrer">Intégrer</li></ul>
+      <p class="resume">Un établissement culturel public remplace sa vidéosurveillance analogique par un système IP. Pour la fiche technique du cahier des clauses techniques (CCTP) de l'appel d'offres, j'ai conçu l'architecture réseau : synoptique, plan d'adressage, répartition des caméras par zone et dimensionnement des switchs et des enregistreurs.</p>
+      <div class="cotes">
+        <div class="cote"><span class="valeur">61 caméras</span><span class="ligne"></span><span class="sens">réparties sur dix switchs PoE de zone</span></div>
+        <div class="cote"><span class="valeur">96 voies</span><span class="ligne"></span><span class="sens">d'enregistrement, réserve comprise</span></div>
+        <div class="cote"><span class="valeur">30 %</span><span class="ligne"></span><span class="sens">de ports laissés libres pour les évolutions</span></div>
+      </div>
+      <details>
+        <summary>Choix techniques</summary>
+        <div class="detail">
+          <div>
+            <h4>Choix techniques</h4>
+            <ul>
+              <li>Un VLAN dédié à la vidéoprotection, en adressage statique : aucune caméra ne dépend d'un serveur DHCP.</li>
+              <li>Les switchs existants sont conservés, six switchs PoE neufs complètent les zones saturées ou non couvertes.</li>
+              <li>Aucune liaison cuivre de plus de 100 m sans switch intermédiaire.</li>
+              <li>Enregistrement sur 30 jours avec écrasement automatique, tête de réseau secourue par onduleur.</li>
+              <li>Un poste de sécurité dédié à la supervision et au report d'images.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Livrables</h4>
+            <p class="outils">Synoptique réseau, plan d'adressage, matrice de flux et notes techniques, réalisés sous draw.io. Les documents complets restent internes à l'entreprise.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="projet" id="stage">
+    <figure class="projet-media">
+      <a href="photos/stage-ipro-detection.jpg"><img src="photos/stage-ipro-detection.jpg" width="1017" height="568" loading="lazy" alt="Image de la caméra i-PRO : deux extincteurs détectés par le modèle entraîné, avec 62 et 64 % de confiance, et une personne détectée à 99 %."></a>
+      <figcaption>Extincteurs détectés par la caméra i-PRO après entraînement</figcaption>
+    </figure>
+    <div>
+      <h3>Détection d'objets par IA embarquée sur caméras IP</h3>
+      <p class="contexte">Avril à juillet 2026, stage de 2<sup>e</sup> année, Ensio, pôle vidéosurveillance de Bassens</p>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="verifier">Vérifier</li><li class="maintenir">Maintenir</li><li class="integrer">Intégrer</li><li class="manager">Manager</li></ul>
+      <p class="resume">Une caméra « intelligente » reconnaît des personnes ou des véhicules, mais peut-elle apprendre un objet quelconque ? J'ai comparé l'apprentissage d'objets personnalisés sur les caméras de plusieurs marques, puis fait remonter ces détections sous forme d'alarmes dans le logiciel de supervision Genetec Security Center. Deux chaînes complètes ont été validées, i-PRO et Hanwha, et documentées en tutoriels pour le pôle.</p>
+      <div class="cotes">
+        <div class="cote"><span class="valeur">3 images</span><span class="ligne"></span><span class="sens">par classe pour distinguer deux canettes sur Hanwha, contre 30 à 45 pour un extincteur sur i-PRO</span></div>
+        <div class="cote"><span class="valeur">2 chaînes</span><span class="ligne"></span><span class="sens">validées de la caméra jusqu'à l'alarme dans Genetec</span></div>
+        <div class="cote"><span class="valeur">3 tutoriels</span><span class="ligne"></span><span class="sens">livrés au pôle : i-PRO, Hanwha et alarme intrusion Ajax</span></div>
+      </div>
+      <details>
+        <summary>Démarche, choix et imprévus</summary>
+        <div class="detail">
+          <div>
+            <h4>Démarche</h4>
+            <ul>
+              <li>Cartographie des marques : apprentissage personnalisé sans code chez i-PRO et Hanwha, développement ACAP obligatoire chez Axis, aucun chez Pelco.</li>
+              <li>Réglage de l'image avant l'apprentissage : gain bas, WDR désactivé, obturateur rapide.</li>
+              <li>Pour chaque marque : capture, étiquetage, entraînement, déploiement dans la caméra, puis règle d'alarme.</li>
+              <li>Dans Genetec : observation de l'événement réel, puis création de l'alarme et de l'automatisation.</li>
+              <li>Vérification de chaque déclenchement dans le journal d'événements de la caméra, horloge synchronisée par NTP.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Choix argumentés</h4>
+            <ul>
+              <li>Détection côté serveur avec YOLO testée puis écartée : plus de latence, et des événements plus fragiles à injecter dans le logiciel de supervision.</li>
+              <li>Genetec retenu face à WAVE, dont la version gratuite n'affiche pas les classes personnalisées.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Imprévus diagnostiqués</h4>
+            <ul>
+              <li>Logiciel WiseDetector bloqué au lancement : cause trouvée dans les journaux, un runtime .NET 5.0 en 32 bits manquant.</li>
+              <li>Caméra Pelco de prêt muette : alimentation PoE, balayage réseau, table ARP, adresse par défaut et réinitialisation contrôlés, puis port RJ45 endommagé signalé au fournisseur avec photos.</li>
+            </ul>
+          </div>
+          <div class="vignettes">
+            <figure><a href="photos/stage-hanwha-canettes.jpg"><img src="photos/stage-hanwha-canettes.jpg" width="504" height="600" loading="lazy" alt="Logiciel WiseDetector : une canette encadrée pour l'apprentissage."></a><figcaption>Étiquetage d'une canette sous WiseDetector</figcaption></figure>
+            <figure><a href="photos/stage-genetec.jpg"><img src="photos/stage-genetec.jpg" width="1351" height="715" loading="lazy" alt="Genetec Security Desk : liste d'événements « Objet détecté dans le champ » et image de la caméra."></a><figcaption>Détections remontées dans Genetec Security Desk</figcaption></figure>
+            <figure><a href="photos/stage-controle-acces.jpg"><img src="photos/stage-controle-acces.jpg" width="1600" height="1200" loading="lazy" alt="Banc de contrôle d'accès : alimentation, module Genetec Synergis Cloud Link et contrôleur HID VertX câblés sur un panneau."></a><figcaption>Banc de contrôle d'accès du pôle : Synergis Cloud Link et contrôleur VertX</figcaption></figure>
+          </div>
+        </div>
+      </details>
+      <div class="docs">
+        <h4>Documents du projet</h4>
+        <ul>
+          <li><a href="documents/rapport-stage-ensio.pdf"><span class="doc-titre">Rapport de stage</span><span class="doc-info">PDF, 29 pages</span><span class="doc-preuve">Manager : démarche complète, comparaison chiffrée et bilan. Version publiée sans les liens vers les tutoriels internes.</span></a></li>
+          <li><a href="documents/soutenance-stage-ensio.pdf"><span class="doc-titre">Support de soutenance</span><span class="doc-info">PDF, 14 pages</span><span class="doc-preuve">Manager : synthèse présentée au jury.</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </article>
 
   <article class="projet" id="sae">
     <figure class="projet-media">
@@ -786,7 +901,7 @@ END_IF;</code></pre>
     </figure>
     <div>
       <h3>Robot guidé par une caméra Wi-Fi</h3>
-      <p class="contexte">2025, BUT GEII</p>
+      <p class="contexte">2025 à 2026, BUT GEII 2<sup>e</sup> année, projet tutoré</p>
       <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir"><a href="#but-concevoir">Concevoir</a></li></ul>
       <p class="resume">La caméra n'est pas sur le robot : elle filme l'arène, repère le robot et sa cible, et envoie leurs positions en UDP sur le réseau Wi-Fi. J'ai écrit en C++ pour l'ESP32 deux bibliothèques, l'une pour le déplacement, l'autre pour calculer l'angle à corriger à partir de ces données.</p>
       <details>
@@ -871,11 +986,11 @@ void loop() { lire_tram_reseau(); }</code></pre>
   </div>
   <div class="selecteur">
     <div role="tablist" class="onglets" aria-label="Compétences du BUT GEII">
-      <button type="button" role="tab" class="onglet" id="tab-concevoir" aria-controls="but-concevoir" aria-selected="true" style="--c: #e30613"><span class="onglet-nom">Concevoir</span><span class="onglet-compte">7 AC prouvés</span></button>
-      <button type="button" role="tab" class="onglet" id="tab-verifier" aria-controls="but-verifier" aria-selected="false" tabindex="-1" style="--c: #f4a46a"><span class="onglet-nom">Vérifier</span><span class="onglet-compte">2 AC prouvés</span></button>
-      <button type="button" role="tab" class="onglet" id="tab-maintenir" aria-controls="but-maintenir" aria-selected="false" tabindex="-1" style="--c: #f2c200"><span class="onglet-nom">Maintenir</span><span class="onglet-compte">1 AC prouvé</span></button>
-      <button type="button" role="tab" class="onglet" id="tab-integrer" aria-controls="but-integrer" aria-selected="false" tabindex="-1" style="--c: #00a651"><span class="onglet-nom">Intégrer</span><span class="onglet-compte">1 AC prouvé</span></button>
-      <button type="button" role="tab" class="onglet" id="tab-manager" aria-controls="but-manager" aria-selected="false" tabindex="-1" style="--c: #e9a6d6"><span class="onglet-nom">Manager</span><span class="onglet-compte">G.1 prouvée</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-concevoir" aria-controls="but-concevoir" aria-selected="true" style="--c: #e30613"><span class="onglet-nom">Concevoir</span><span class="onglet-compte">8 AC prouvés</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-verifier" aria-controls="but-verifier" aria-selected="false" tabindex="-1" style="--c: #f4a46a"><span class="onglet-nom">Vérifier</span><span class="onglet-compte">4 AC prouvés</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-maintenir" aria-controls="but-maintenir" aria-selected="false" tabindex="-1" style="--c: #f2c200"><span class="onglet-nom">Maintenir</span><span class="onglet-compte">2 AC prouvés</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-integrer" aria-controls="but-integrer" aria-selected="false" tabindex="-1" style="--c: #00a651"><span class="onglet-nom">Intégrer</span><span class="onglet-compte">3 AC prouvés</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-manager" aria-controls="but-manager" aria-selected="false" tabindex="-1" style="--c: #e9a6d6"><span class="onglet-nom">Manager</span><span class="onglet-compte">G.1 et G.2 prouvées</span></button>
     </div>
     <div role="tabpanel" class="panneau" id="but-concevoir" aria-labelledby="tab-concevoir" style="--c: #e30613">
       <h3 class="panneau-titre">Concevoir</h3>
@@ -884,7 +999,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
           <h4><span>C.1</span> J'identifie les fonctions demandées à la lecture du cahier des charges</h4>
           <ul class="acs">
           <li class="ac">
-            <p class="ac-code">AC11.01</p>
+            <p class="ac-code">AC11.01<span class="ac-niv">niveau 1</span></p>
             <div>
               <p class="ac-lib">Produire une analyse fonctionnelle d'un système simple</p>
               <p class="ac-preuve">Diagrammes d'architecture de l'émetteur et du récepteur du kart. Sur Mugochaud, une incohérence du cahier des charges sur l'éclairage relevée et corrigée avec les chefs de projet.</p>
@@ -897,11 +1012,11 @@ void loop() { lire_tram_reseau(); }</code></pre>
           <h4><span>C.2</span> Je propose une solution technique pour répondre à une fonction</h4>
           <ul class="acs">
           <li class="ac">
-            <p class="ac-code">AC21.01</p>
+            <p class="ac-code">AC21.01<span class="ac-niv">niveau 2</span></p>
             <div>
               <p class="ac-lib">Proposer des solutions techniques liées à l'analyse fonctionnelle</p>
-              <p class="ac-preuve">Choix du capteur PT1000, du verrou à électro-aimant et du correcteur PI calculé sous Matlab pour Mugochaud. Grafcets de conduite et de production rédigés à partir du cahier des charges de la SAE.</p>
-              <p class="ac-liens"><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien projet" href="#sae">SAE</a></p>
+              <p class="ac-preuve">Architecture réseau d'une vidéoprotection IP en alternance : VLAN dédié, switchs PoE par zone, enregistreurs dimensionnés. Choix du capteur, du verrou et du correcteur PI de Mugochaud. Grafcets de la SAE.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#alternance">Alternance</a><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien projet" href="#sae">SAE</a></p>
             </div>
           </li>
           </ul>
@@ -910,7 +1025,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
           <h4><span>C.3</span> J'affine une solution technique en m'appuyant sur un maquettage numérique et/ou matériel</h4>
           <ul class="acs">
           <li class="ac">
-            <p class="ac-code">AC11.02</p>
+            <p class="ac-code">AC11.02<span class="ac-niv">niveau 1</span></p>
             <div>
               <p class="ac-lib">Réaliser un prototype pour des solutions techniques matériel et/ou logiciel</p>
               <p class="ac-preuve">Carte récepteur du kart, robot Mini-Sumo, bibliothèques C++ du robot guidé par caméra.</p>
@@ -918,19 +1033,19 @@ void loop() { lire_tram_reseau(); }</code></pre>
             </div>
           </li>
           <li class="ac">
-            <p class="ac-code">AC21.02</p>
+            <p class="ac-code">AC21.02<span class="ac-niv">niveau 2</span></p>
             <div>
               <p class="ac-lib">Dérisquer les solutions techniques retenues</p>
-              <p class="ac-preuve">En stage, détection côté serveur avec YOLO testée puis écartée, au profit de la détection embarquée dans les caméras.</p>
-              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a></p>
+              <p class="ac-preuve">En stage, capacité d'apprentissage vérifiée marque par marque avant les essais, et détection côté serveur avec YOLO testée puis écartée au profit de la détection embarquée.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a></p>
             </div>
           </li>
           <li class="ac">
-            <p class="ac-code">AC31.02</p>
+            <p class="ac-code">AC31.02<span class="ac-niv">niveau 3</span></p>
             <div>
               <p class="ac-lib">Prouver la pertinence de ses choix technologiques</p>
-              <p class="ac-preuve">En stage, Genetec Security Center retenu parce qu'il affiche les classes de détection personnalisées, contrairement à WAVE.</p>
-              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a></p>
+              <p class="ac-preuve">En stage, IA embarquée préférée à l'IA serveur sur quatre critères (coût, technique, complexité, temps), et Genetec retenu parce qu'il exploite les classes personnalisées, contrairement à WAVE.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/soutenance-stage-ensio.pdf">Soutenance<span class="sr"> (PDF)</span></a></p>
             </div>
           </li>
           </ul>
@@ -939,7 +1054,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
           <h4><span>C.4</span> Je rédige un dossier de conception et de fabrication</h4>
           <ul class="acs">
           <li class="ac">
-            <p class="ac-code">AC11.03</p>
+            <p class="ac-code">AC11.03<span class="ac-niv">niveau 1</span></p>
             <div>
               <p class="ac-lib">Rédiger un dossier de fabrication à partir d'un dossier de conception</p>
               <p class="ac-preuve">Dossiers de fabrication du Mini-Sumo et de l'émetteur et du récepteur du kart.</p>
@@ -947,7 +1062,15 @@ void loop() { lire_tram_reseau(); }</code></pre>
             </div>
           </li>
           <li class="ac">
-            <p class="ac-code">AC31.03</p>
+            <p class="ac-code">AC31.01<span class="ac-niv">niveau 3</span></p>
+            <div>
+              <p class="ac-lib">Contribuer à la rédaction d'un cahier des charges</p>
+              <p class="ac-preuve">En alternance, synoptique et notes techniques pour la fiche technique du CCTP d'un marché public de vidéoprotection.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#alternance">Alternance</a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC31.03<span class="ac-niv">niveau 3</span></p>
             <div>
               <p class="ac-lib">Rédiger un dossier de conception</p>
               <p class="ac-preuve">Dossier de conception de Mugochaud (26 pages, en binôme) et du kart (85 pages, en équipe).</p>
@@ -959,12 +1082,12 @@ void loop() { lire_tram_reseau(); }</code></pre>
     </div>
     <div role="tabpanel" class="panneau" id="but-verifier" aria-labelledby="tab-verifier" style="--c: #f4a46a">
       <h3 class="panneau-titre">Vérifier</h3>
-      <p class="panneau-accroche">Définir les essais, les mener et conclure sur la conformité au cahier des charges.</p>
+      <p class="panneau-accroche">Définir les essais, les mener, et identifier ce qui n'est pas conforme.</p>
         <div class="composante">
           <h4><span>V.1</span> J'applique, j'élabore, je rédige une procédure d'essais</h4>
           <ul class="acs">
           <li class="ac">
-            <p class="ac-code">AC12.01</p>
+            <p class="ac-code">AC12.01<span class="ac-niv">niveau 1</span></p>
             <div>
               <p class="ac-lib">Appliquer une procédure d'essais</p>
               <p class="ac-preuve">Essais mécaniques et validation de la coupure de la batterie à 6,7 V sur le Mini-Sumo. Mesures à l'oscilloscope des commandes du kart.</p>
@@ -972,11 +1095,32 @@ void loop() { lire_tram_reseau(); }</code></pre>
             </div>
           </li>
           <li class="ac">
-            <p class="ac-code">AC22.01</p>
+            <p class="ac-code">AC22.01<span class="ac-niv">niveau 2</span></p>
             <div>
               <p class="ac-lib">Identifier les tests et mesures à mettre en place pour valider le fonctionnement d'un système</p>
-              <p class="ac-preuve">Six essais définis à partir de la matrice de vérification du cahier des charges de Mugochaud, résultats mesurés, produit déclaré conforme.</p>
-              <p class="ac-liens"><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-verification.pdf">DDV de Mugochaud<span class="sr"> (PDF)</span></a></p>
+              <p class="ac-preuve">Six essais de Mugochaud définis à partir de la matrice de vérification du cahier des charges. En stage, chaque déclenchement vérifié dans le journal d'événements de la caméra, puis la chaîne validée jusqu'à l'alarme dans Genetec.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-verification.pdf">DDV de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+        <div class="composante">
+          <h4><span>V.2</span> J'identifie, je corrige les non-conformités d'un prototype</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC12.02<span class="ac-niv">niveau 1</span></p>
+            <div>
+              <p class="ac-lib">Identifier une non-conformité</p>
+              <p class="ac-preuve">En stage, une caméra Pelco de prêt muette : défaut matériel confirmé, port RJ45 endommagé avant la livraison.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC12.03<span class="ac-niv">niveau 1</span></p>
+            <div>
+              <p class="ac-lib">Décrire une non-conformité</p>
+              <p class="ac-preuve">Le même défaut décrit et signalé au fournisseur par courriel, avec photos.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a></p>
             </div>
           </li>
           </ul>
@@ -984,16 +1128,24 @@ void loop() { lire_tram_reseau(); }</code></pre>
     </div>
     <div role="tabpanel" class="panneau" id="but-maintenir" aria-labelledby="tab-maintenir" style="--c: #f2c200">
       <h3 class="panneau-titre">Maintenir</h3>
-      <p class="panneau-accroche">Diagnostiquer un dysfonctionnement et remettre un système en état.</p>
+      <p class="panneau-accroche">Diagnostiquer méthodiquement et remonter à la cause d'une panne.</p>
         <div class="composante">
           <h4><span>M.1</span> J'applique une opération de maintenance (préventive, corrective, améliorative) à un système</h4>
           <ul class="acs">
           <li class="ac">
-            <p class="ac-code">AC23.03</p>
+            <p class="ac-code">AC23.03<span class="ac-niv">niveau 2</span></p>
             <div>
               <p class="ac-lib">Diagnostiquer un dysfonctionnement dans un système</p>
-              <p class="ac-preuve">En stage, diagnostic réseau complet d'une caméra Pelco défectueuse. Analyse et réparation de l'enceinte de Mugochaud.</p>
-              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a></p>
+              <p class="ac-preuve">Caméra Pelco muette : alimentation PoE, balayage réseau, table ARP, adresse IP par défaut et réinitialisation usine contrôlés dans l'ordre.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC23.04<span class="ac-niv">niveau 2</span></p>
+            <div>
+              <p class="ac-lib">Identifier la cause racine du dysfonctionnement</p>
+              <p class="ac-preuve">Logiciel WiseDetector bloqué au lancement : les journaux montrent qu'il manque le runtime .NET 5.0 en 32 bits, la version 64 bits ne suffisant pas.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a></p>
             </div>
           </li>
           </ul>
@@ -1001,16 +1153,37 @@ void loop() { lire_tram_reseau(); }</code></pre>
     </div>
     <div role="tabpanel" class="panneau" id="but-integrer" aria-labelledby="tab-integrer" style="--c: #00a651">
       <h3 class="panneau-titre">Intégrer</h3>
-      <p class="panneau-accroche">Installer et mettre en service un système automatisé, parcours AII.</p>
+      <p class="panneau-accroche">Installer, mettre en service et préparer la mise en service d'un système, parcours AII.</p>
         <div class="composante">
           <h4><span>I.1.1</span> J'exécute l'installation et la mise en service d'un système</h4>
           <ul class="acs">
           <li class="ac">
-            <p class="ac-code">AC24.02AII</p>
+            <p class="ac-code">AC24.02AII<span class="ac-niv">niveau 2</span></p>
             <div>
               <p class="ac-lib">Exécuter la mise en service d'un système en respectant la procédure</p>
-              <p class="ac-preuve">Câblage de l'armoire et mise en service de l'automate S7-1200 de Mugochaud. Intégration des caméras dans Genetec Security Center pendant le stage.</p>
+              <p class="ac-preuve">Câblage de l'armoire et mise en service de l'automate S7-1200 de Mugochaud. En stage, caméras i-PRO et Hanwha paramétrées et intégrées dans Genetec jusqu'à l'alarme.</p>
               <p class="ac-liens"><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien projet" href="#stage">Stage</a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+        <div class="composante">
+          <h4><span>I.1.2</span> Je gère le processus d'installation et de mise en service d'un système</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC34.01AII<span class="ac-niv">niveau 3</span></p>
+            <div>
+              <p class="ac-lib">Planifier l'installation et la mise en service d'un nouvel équipement</p>
+              <p class="ac-preuve">En alternance, répartition des 61 caméras sur dix switchs PoE, dimensionnement des enregistreurs et réserve de 30 % de ports pour les évolutions.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#alternance">Alternance</a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC34.02AII<span class="ac-niv">niveau 3</span></p>
+            <div>
+              <p class="ac-lib">Produire une procédure d'installation et de mise en service d'un système</p>
+              <p class="ac-preuve">En stage, trois tutoriels reproductibles livrés au pôle : i-PRO, Hanwha et alarme intrusion Ajax.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a></p>
             </div>
           </li>
           </ul>
@@ -1018,7 +1191,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
     </div>
     <div role="tabpanel" class="panneau" id="but-manager" aria-labelledby="tab-manager" style="--c: #e9a6d6">
       <h3 class="panneau-titre">Manager</h3>
-      <p class="panneau-accroche">Produire et archiver les documents qui accompagnent un projet.</p>
+      <p class="panneau-accroche">Produire les documents d'un projet et gérer ses aspects administratifs.</p>
         <div class="composante">
           <h4><span>G.1</span> Je rédige et archive différents documents professionnels</h4>
           <ul class="acs">
@@ -1026,8 +1199,21 @@ void loop() { lire_tram_reseau(); }</code></pre>
             <p class="ac-code">G.1</p>
             <div>
               <p class="ac-lib">Rédiger et archiver des documents professionnels</p>
-              <p class="ac-preuve">Dossiers de conception, de fabrication et de vérification de mes projets, rapport de stage.</p>
-              <p class="ac-liens"><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-verification.pdf">DDV de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/mini-sumo-dossier-fabrication.pdf">DDF du Mini-Sumo<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/kart-dossier-conception.pdf">DDC du kart<span class="sr"> (PDF)</span></a></p>
+              <p class="ac-preuve">Rapport et soutenance de stage, dossiers de conception, de fabrication et de vérification de mes projets.</p>
+              <p class="ac-liens"><a class="preuve-lien pdf" href="documents/rapport-stage-ensio.pdf">Rapport de stage<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/soutenance-stage-ensio.pdf">Soutenance<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/kart-dossier-conception.pdf">DDC du kart<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+        <div class="composante">
+          <h4><span>G.2</span> J'effectue des tâches administratives</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">G.2</p>
+            <div>
+              <p class="ac-lib">Passer des commandes, demander un devis, gérer un budget</p>
+              <p class="ac-preuve">En stage, devis d'une solution de test Hanwha et WAVE, et demandes de prêt de caméras et de licence Genetec auprès des constructeurs.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a></p>
             </div>
           </li>
           </ul>
@@ -1062,13 +1248,13 @@ void loop() { lire_tram_reseau(); }</code></pre>
       </div>
     </li>
     <li class="g-transition"><div class="g-col"><span class="g-barre"></span></div><p class="g-cond">Convention de stage signée</p></li>
-    <li class="g-etape" id="stage">
+    <li class="g-etape" id="stage-parcours">
       <div class="g-col"><span class="g-num">2</span></div>
       <div class="g-action">
         <p class="g-date">Avril à juillet 2026</p>
         <h3>Stage au pôle vidéosurveillance</h3>
         <p class="ou">ENSIO, Bassens</p>
-        <p>Stage de 2<sup>e</sup> année, dans une activité lancée sur le site en janvier 2026. Mission : étude comparative de la détection d'objets personnalisée par IA sur des caméras IP de quatre marques (i-PRO, Hanwha, Pelco, Axis), et de leur intégration dans le logiciel de supervision vidéo Genetec Security Center.</p>
+        <p>Stage de 2<sup>e</sup> année, dans une activité lancée sur le site en janvier 2026. Mission : détection d'objets par IA embarquée sur caméras IP et intégration dans Genetec Security Center (<a href="#stage">voir le projet</a>).</p>
       </div>
     </li>
     <li class="g-transition"><div class="g-col"><span class="g-barre"></span></div><p class="g-cond">Contrat d'alternance signé</p></li>
@@ -1078,7 +1264,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
         <p class="g-date">Depuis septembre 2026</p>
         <h3>Technicien réseaux en alternance</h3>
         <p class="ou">Ensio Sud, Bassens, et 3<sup>e</sup> année de BUT GEII</p>
-        <p>Sûreté électronique : vidéosurveillance, contrôle d'accès et protection périmétrique.</p>
+        <p>Sûreté électronique : vidéosurveillance, contrôle d'accès et protection périmétrique. Premier dossier : un avant-projet de vidéoprotection IP (<a href="#alternance">voir le projet</a>).</p>
       </div>
     </li>
     <li class="g-transition suite"><div class="g-col"><span class="g-barre"></span></div><p class="g-cond">BUT obtenu, juin 2027</p></li>
@@ -1111,7 +1297,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
   <div class="contact">
     <div></div>
     <div>
-      <a class="mail" href="mailto:f.helaudais@etu.u-bordeaux.fr">f.helaudais@etu.u-bordeaux.fr</a>
+      <a class="mail" href="mailto:fififi33160@gmail.com">fififi33160@gmail.com</a>
       <ul>
         <li><a href="tel:+33768941054">07 68 94 10 54</a></li>
         <li><a href="https://www.linkedin.com/in/francois-helaudais">LinkedIn</a></li>
