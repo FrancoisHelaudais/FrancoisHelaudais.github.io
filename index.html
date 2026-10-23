@@ -473,6 +473,9 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 
 .ac-niv { display: block; font-family: var(--texte); font-size: 11.5px; color: var(--annot); margin-top: 2px; }
 
+.hero-ia .repere text { font-size: 34px; }
+.hero-ia .repere line, .hero-ia .repere circle.bulle { stroke-width: 3.5; }
+
 @media print {
   .barre nav, .actions, summary { display: none; }
   details > .detail { display: grid; }
@@ -523,24 +526,20 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 
     <div class="garde-vue">
       <figure>
-        <div class="vue">
-          <img src="photos/mugochaud-2.jpg" width="1200" height="1600" alt="Armoire électrique ouverte du projet Mugochaud : automate, alimentation, disjoncteurs, arrêt d'urgence et bornier." fetchpriority="high">
-          <svg viewBox="0 0 1200 1600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <g class="repere"><line x1="480" y1="740" x2="700" y2="860"/><circle class="point" cx="480" cy="740" r="10"/><circle class="bulle" cx="700" cy="860" r="36"/><text x="700" y="862">1</text></g>
-            <g class="repere"><line x1="620" y1="420" x2="780" y2="300"/><circle class="point" cx="620" cy="420" r="10"/><circle class="bulle" cx="780" cy="300" r="36"/><text x="780" y="302">2</text></g>
-            <g class="repere"><line x1="380" y1="400" x2="330" y2="250"/><circle class="point" cx="380" cy="400" r="10"/><circle class="bulle" cx="330" cy="250" r="36"/><text x="330" y="252">3</text></g>
-            <g class="repere"><line x1="80" y1="430" x2="150" y2="640"/><circle class="point" cx="80" cy="430" r="10"/><circle class="bulle" cx="150" cy="640" r="36"/><text x="150" y="642">4</text></g>
-            <g class="repere"><line x1="530" y1="930" x2="640" y2="1080"/><circle class="point" cx="530" cy="930" r="10"/><circle class="bulle" cx="640" cy="1080" r="36"/><text x="640" y="1082">5</text></g>
+        <div class="vue hero-ia">
+          <img src="photos/stage-ipro-detection.jpg" width="1017" height="568" alt="Image d'une caméra i-PRO pendant le stage : deux extincteurs détectés par le modèle que j'ai entraîné, à 62 et 64 % de confiance, et une personne détectée à 99 %." fetchpriority="high">
+          <svg viewBox="0 0 1017 568" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g class="repere"><line x1="592" y1="100" x2="430" y2="70"/><circle class="point" cx="592" cy="100" r="8"/><circle class="bulle" cx="430" cy="70" r="30"/><text x="430" y="72">1</text></g>
+            <g class="repere"><line x1="540" y1="400" x2="380" y2="470"/><circle class="point" cx="540" cy="400" r="8"/><circle class="bulle" cx="380" cy="470" r="30"/><text x="380" y="472">2</text></g>
+            <g class="repere"><line x1="650" y1="230" x2="748" y2="300"/><circle class="point" cx="650" cy="230" r="8"/><circle class="bulle" cx="748" cy="300" r="30"/><text x="748" y="302">3</text></g>
           </svg>
         </div>
         <figcaption>
-          <p class="vue-titre">Armoire de commande du projet Mugochaud</p>
+          <p class="vue-titre">Détection par IA embarquée, caméra i-PRO, stage 2026</p>
           <ol class="legende">
-            <li><b>1</b>Automate Siemens S7-1200</li>
-            <li><b>2</b>Alimentation</li>
-            <li><b>3</b>Disjoncteurs</li>
-            <li><b>4</b>Arrêt d'urgence</li>
-            <li><b>5</b>Bornier</li>
+            <li><b>1</b>Extincteur appris&nbsp;: 62&nbsp;%</li>
+            <li><b>2</b>Extincteur appris&nbsp;: 64&nbsp;%</li>
+            <li><b>3</b>Personne, classe native&nbsp;: 99&nbsp;%</li>
           </ol>
         </figcaption>
       </figure>
@@ -600,8 +599,8 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 
   <article class="projet" id="stage">
     <figure class="projet-media">
-      <a href="photos/stage-ipro-detection.jpg"><img src="photos/stage-ipro-detection.jpg" width="1017" height="568" loading="lazy" alt="Image de la caméra i-PRO : deux extincteurs détectés par le modèle entraîné, avec 62 et 64 % de confiance, et une personne détectée à 99 %."></a>
-      <figcaption>Extincteurs détectés par la caméra i-PRO après entraînement</figcaption>
+      <a href="photos/stage-hanwha-canettes.jpg"><img src="photos/stage-hanwha-canettes.jpg" width="504" height="600" loading="lazy" alt="Logiciel WiseDetector : une canette encadrée pour l'apprentissage d'une nouvelle classe."></a>
+      <figcaption>Apprentissage d'une canette sous WiseDetector (Hanwha). La détection i-PRO est en photo d'ouverture.</figcaption>
     </figure>
     <div>
       <h3>Détection d'objets par IA embarquée sur caméras IP</h3>
@@ -641,10 +640,8 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
             </ul>
           </div>
           <div class="vignettes">
-            <figure><a href="photos/stage-hanwha-canettes.jpg"><img src="photos/stage-hanwha-canettes.jpg" width="504" height="600" loading="lazy" alt="Logiciel WiseDetector : une canette encadrée pour l'apprentissage."></a><figcaption>Étiquetage d'une canette sous WiseDetector</figcaption></figure>
             <figure><a href="photos/stage-genetec.jpg"><img src="photos/stage-genetec.jpg" width="1351" height="715" loading="lazy" alt="Genetec Security Desk : liste d'événements « Objet détecté dans le champ » et image de la caméra."></a><figcaption>Détections remontées dans Genetec Security Desk</figcaption></figure>
-            <figure><a href="photos/stage-controle-acces.jpg"><img src="photos/stage-controle-acces.jpg" width="1600" height="1200" loading="lazy" alt="Banc de contrôle d'accès : alimentation, module Genetec Synergis Cloud Link et contrôleur HID VertX câblés sur un panneau."></a><figcaption>Banc de contrôle d'accès du pôle : Synergis Cloud Link et contrôleur VertX</figcaption></figure>
-          </div>
+            </div>
         </div>
       </details>
       <div class="docs">
@@ -676,7 +673,7 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
       </ol>
       <div class="etat">
         <p><b>Fait</b>Grafcets de conduite, de production de la station et du robot, et de prise d'origine du robot, en niveaux 1 et 2. Table des variables des deux automates.</p>
-        <p class="suite"><b>En cours</b>Programmation en Ladder et essais sur la station.</p>
+        <p class="suite"><b>En cours</b>Programmation en Ladder, puis essais sur la station.</p>
       </div>
       <details>
         <summary>Cahier des charges et choix de conception</summary>
@@ -860,10 +857,10 @@ END_IF;</code></pre>
       <h3>Kart à hélice télécommandé en infrarouge</h3>
       <p class="contexte">2025, BUT GEII 1<sup>re</sup> année, équipe de huit</p>
       <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir"><a href="#but-concevoir">Concevoir</a></li><li class="verifier"><a href="#but-verifier">Vérifier</a></li><li class="manager"><a href="#but-manager">Manager</a></li></ul>
-      <p class="resume">Un kart miniature propulsé par une hélice, piloté par une télécommande infrarouge qui encode direction et vitesse selon le protocole NEC. J'ai conçu sous ARES l'architecture de la carte récepteur, vérifié l'intégration mécanique et mené les mesures à l'oscilloscope.</p>
+      <p class="resume">Un kart miniature propulsé par une hélice, piloté par une télécommande infrarouge qui encode direction et vitesse selon le protocole NEC. Dans le dossier de conception, rédigé à plusieurs, j'ai écrit le programme de l'émetteur, le plan mécanique du récepteur sous ARES, le dimensionnement du moteur, des LED et de la batterie, et la coupure de la propulsion en cas de perte du signal.</p>
       <div class="cotes">
-        <div class="cote"><span class="valeur">423 min</span><span class="ligne"></span><span class="sens">d'autonomie au minimum pour l'émetteur</span></div>
-        <div class="cote"><span class="valeur">0,2 à 2,4 %</span><span class="ligne"></span><span class="sens">d'erreur sur les commandes de direction et de vitesse</span></div>
+        <div class="cote"><span class="valeur">5,6 h</span><span class="ligne"></span><span class="sens">d'autonomie calculée pour l'émetteur, marge de 20 % incluse, exigence 1 h</span></div>
+        <div class="cote"><span class="valeur">52,4 mA</span><span class="ligne"></span><span class="sens">de consommation calculée pour l'émetteur, sur batterie LiPo 2S de 350 mAh</span></div>
       </div>
       <details>
         <summary>Cahier des charges et matériel</summary>
@@ -886,7 +883,7 @@ END_IF;</code></pre>
       <div class="docs">
         <h4>Documents du projet</h4>
         <ul>
-          <li><a href="documents/kart-dossier-conception.pdf"><span class="doc-titre">Dossier de conception (DDC)</span><span class="doc-info">PDF, 85 pages</span><span class="doc-preuve">Concevoir : architecture de l'émetteur et du récepteur, choix justifiés face au cahier des charges. Rédigé en équipe.</span></a></li>
+          <li><a href="documents/kart-dossier-conception.pdf"><span class="doc-titre">Dossier de conception (DDC)</span><span class="doc-info">PDF, 85 pages</span><span class="doc-preuve">Concevoir : rédigé en équipe. Mes sections : programme de l'émetteur, mécanique du récepteur, dimensionnement du moteur, des LED et de la batterie.</span></a></li>
           <li><a href="documents/kart-dossier-fabrication-recepteur.pdf"><span class="doc-titre">Dossier de fabrication du récepteur (DDF)</span><span class="doc-info">PDF, 11 pages</span><span class="doc-preuve">Concevoir : fabrication de la carte récepteur, co-rédigé.</span></a></li>
           <li><a href="documents/kart-dossier-fabrication-emetteur.pdf"><span class="doc-titre">Dossier de fabrication de l'émetteur (DDF)</span><span class="doc-info">PDF, 13 pages</span><span class="doc-preuve">Concevoir : fabrication de la télécommande, co-rédigé.</span></a></li>
         </ul>
@@ -1028,7 +1025,7 @@ void loop() { lire_tram_reseau(); }</code></pre>
             <p class="ac-code">AC11.02<span class="ac-niv">niveau 1</span></p>
             <div>
               <p class="ac-lib">Réaliser un prototype pour des solutions techniques matériel et/ou logiciel</p>
-              <p class="ac-preuve">Carte récepteur du kart, robot Mini-Sumo, bibliothèques C++ du robot guidé par caméra.</p>
+              <p class="ac-preuve">Programme de l'émetteur et plan mécanique du récepteur du kart, robot Mini-Sumo, bibliothèques C++ du robot guidé par caméra.</p>
               <p class="ac-liens"><a class="preuve-lien projet" href="#kart">Kart</a><a class="preuve-lien projet" href="#sumo">Mini-Sumo</a><a class="preuve-lien projet" href="#vision">Robot guidé par caméra</a></p>
             </div>
           </li>
@@ -1090,8 +1087,8 @@ void loop() { lire_tram_reseau(); }</code></pre>
             <p class="ac-code">AC12.01<span class="ac-niv">niveau 1</span></p>
             <div>
               <p class="ac-lib">Appliquer une procédure d'essais</p>
-              <p class="ac-preuve">Essais mécaniques et validation de la coupure de la batterie à 6,7 V sur le Mini-Sumo. Mesures à l'oscilloscope des commandes du kart.</p>
-              <p class="ac-liens"><a class="preuve-lien projet" href="#sumo">Mini-Sumo</a><a class="preuve-lien projet" href="#kart">Kart</a></p>
+              <p class="ac-preuve">Essais mécaniques et validation de la coupure de la batterie à 6,7 V sur le Mini-Sumo.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#sumo">Mini-Sumo</a><a class="preuve-lien pdf" href="documents/mini-sumo-dossier-fabrication.pdf">DDF du Mini-Sumo<span class="sr"> (PDF)</span></a></p>
             </div>
           </li>
           <li class="ac">
