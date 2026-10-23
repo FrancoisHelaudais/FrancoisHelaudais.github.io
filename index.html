@@ -953,7 +953,8 @@ void lire_tram_reseau() {
 
             // État 1 : avance avec correction de cap
             if (statecontrol != 0) {
-                avance(30, k * (int)angleRadian);
+                // Conversion après le produit : (int)angleRadian vaudrait 0 sous 1 rad
+                avance(30, (int)(k * angleRadian));
             }
         }
     }
