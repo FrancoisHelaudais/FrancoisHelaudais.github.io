@@ -395,6 +395,65 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
 .doc-preuve { grid-column: 2 / -1; font-size: 13.5px; color: var(--annot); }
 @media (max-width: 560px) { .docs a { grid-template-columns: 22px minmax(0, 1fr); } .doc-info { grid-column: 2; } }
 
+
+/* ── Compétences GEII : sélecteur à onglets ── */
+.selecteur { margin-top: 30px; border: 2px solid var(--plan); }
+.onglets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--plan); border-bottom: 2px solid var(--plan); }
+.onglet {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  padding: 14px 16px 14px 34px; border: 0; background: var(--papier); color: var(--plan); text-align: left;
+  font: inherit; cursor: pointer;
+}
+.onglet::before { content: ''; position: absolute; left: 14px; top: 20px; width: 11px; height: 11px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+.onglet-nom { font-family: var(--lettrage); font-size: 21px; line-height: 1.1; }
+.onglet-compte { font-size: 12.5px; color: var(--annot); }
+.onglet:hover { background: var(--teinte-2); }
+.onglet[aria-selected="true"] { background: var(--plan); color: var(--papier); }
+.onglet[aria-selected="true"] .onglet-compte { color: #d4def3; }
+.onglet[aria-selected="true"]::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 5px; background: var(--c); }
+.onglet:focus-visible { outline-offset: -4px; outline-color: var(--papier); }
+.panneau { padding: 26px 28px 30px; }
+.panneau[hidden] { display: none; }
+.js-off .panneau + .panneau { border-top: 2px solid var(--plan); }
+.panneau-titre { font-size: 30px; color: var(--plan); display: flex; align-items: center; gap: 12px; }
+.panneau-titre::before { content: ''; width: 16px; height: 16px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+.panneau-accroche { color: var(--annot); margin-top: 2px; }
+.composante { margin-top: 24px; }
+.composante h4 { font-family: var(--texte); font-weight: 700; font-size: 15px; padding-bottom: 6px; border-bottom: 1.5px solid var(--plan); }
+.composante h4 span { font-family: var(--lettrage); font-weight: 400; font-size: 18px; color: var(--plan); margin-right: 6px; }
+.acs { list-style: none; }
+.ac { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--trame); }
+.ac-code { font-family: var(--lettrage); font-size: 20px; color: var(--plan); line-height: 1.2; }
+.ac-lib { font-size: 13.5px; color: var(--annot); }
+.ac-preuve { margin-top: 3px; max-width: 46em; }
+.ac-liens { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.preuve-lien { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px 5px; font-size: 13.5px; text-decoration: none; border: 1.5px solid var(--plan); color: var(--plan); background: var(--papier); }
+.preuve-lien:hover { background: var(--plan); color: var(--papier); }
+.preuve-lien.projet::before { content: ''; width: 8px; height: 8px; border: 1.5px solid currentColor; border-radius: 50%; }
+.preuve-lien.pdf { background: var(--teinte); }
+.preuve-lien.pdf:hover { background: var(--plan); }
+.preuve-lien.pdf::before { content: ''; width: 9px; height: 12px; border: 1.5px solid currentColor; background: linear-gradient(225deg, currentColor 0 3px, transparent 3px); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.but a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.but li:has(a):hover { background: var(--teinte); }
+.but li:has(a) { padding: 0; }
+.but li:has(a)::before { display: none; }
+.but li a { padding: 2px 9px 3px 7px; }
+.but li a::before { content: ''; width: 10px; height: 10px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+@media (max-width: 900px) {
+  .onglets { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .onglet:last-child { grid-column: span 2; }
+  .ac { grid-template-columns: 1fr; gap: 4px; }
+  .panneau { padding: 20px 16px 24px; }
+}
+@media (max-width: 560px) {
+  .onglets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .onglet:last-child { grid-column: 1 / -1; }
+  .onglet { padding: 11px 10px 11px 28px; }
+  .onglet::before { left: 10px; top: 16px; }
+  .onglet-nom { font-size: 18px; }
+}
+
 @media print {
   .barre nav, .actions, summary { display: none; }
   details > .detail { display: grid; }
@@ -411,7 +470,8 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
   <nav aria-label="Sections">
     <a href="#projets">Projets</a>
     <a href="#parcours">Parcours</a>
-    <a href="#competences">Compétences</a>
+    <a href="#geii">Compétences GEII</a>
+    <a href="#competences">Outils</a>
     <a href="#contact">Contact</a>
     <a href="cv_francois_helaudais.pdf">CV (PDF)</a>
   </nav>
@@ -490,7 +550,7 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
     <div>
       <h3>Poste automatisé de chargement et déchargement <span class="en-cours">En cours</span></h3>
       <p class="contexte">2026, SAE de 3<sup>e</sup> année en équipe, plateforme Festo CP Lab</p>
-      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li></ul>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir"><a href="#but-concevoir">Concevoir</a></li></ul>
       <p class="resume">Une station qui range des coques dans un magasin ou les en ressort, selon ce qui arrive sur la palette. Le convoyeur amène la palette sous un bras robot cartésien, qui fait le transfert. Deux automates se partagent le poste : un ET 200SP (CPU 1512SP) pour la station et le convoyeur, un S7-1200 (CPU 1214C) pour le robot, qui échangent leurs données en iDevice sur PROFINET.</p>
       <p class="resume">Dans l'équipe, je conçois les Grafcets du poste, en niveaux 1 et 2, puis je les traduis en Ladder.</p>
       <ol class="chaine" aria-label="Hiérarchie des Grafcets du poste">
@@ -541,7 +601,7 @@ footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: fl
     <div>
       <h3>Mugochaud, enceinte chauffante régulée</h3>
       <p class="contexte">2026, BUT GEII 2<sup>e</sup> année, en binôme</p>
-      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="verifier">Vérifier</li><li class="integrer">Intégrer</li><li class="manager">Manager</li></ul>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir"><a href="#but-concevoir">Concevoir</a></li><li class="verifier"><a href="#but-verifier">Vérifier</a></li><li class="integrer"><a href="#but-integrer">Intégrer</a></li><li class="manager"><a href="#but-manager">Manager</a></li></ul>
       <p class="resume">Une enceinte qui chauffe et maintient un mug à 50 °C, pilotée par un automate Siemens S7-1200. J'ai câblé la partie puissance de l'armoire, programmé en SCL les Grafcets de sécurité et de production, et calculé sous Matlab le correcteur PI de la régulation.</p>
       <div class="cotes">
         <div class="cote"><span class="valeur">6 min 20 s</span><span class="ligne"></span><span class="sens">pour atteindre 50 °C, objectif sous 10 min</span></div>
@@ -631,7 +691,7 @@ END_IF;</code></pre>
     <div>
       <h3>Robot Mini-Sumo autonome</h3>
       <p class="contexte">2025 à 2026, BUT GEII 2<sup>e</sup> année, équipe de cinq, Tournoi National de Robotique Sumo</p>
-      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="verifier">Vérifier</li><li class="manager">Manager</li></ul>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir"><a href="#but-concevoir">Concevoir</a></li><li class="verifier"><a href="#but-verifier">Vérifier</a></li><li class="manager"><a href="#but-manager">Manager</a></li></ul>
       <p class="resume">Un robot de combat qui repère son adversaire aux ultrasons et le pousse hors de l'arène, dans un format imposé. J'ai rédigé les protocoles des dossiers de vérification et de fabrication, mené les essais mécaniques et validé la coupure de sécurité de la batterie.</p>
       <div class="cotes">
         <div class="cote"><span class="valeur">99,98 mm</span><span class="ligne"></span><span class="sens">largeur hors tout, limite 100 mm</span></div>
@@ -684,7 +744,7 @@ END_IF;</code></pre>
     <div>
       <h3>Kart à hélice télécommandé en infrarouge</h3>
       <p class="contexte">2025, BUT GEII 1<sup>re</sup> année, équipe de huit</p>
-      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li><li class="verifier">Vérifier</li><li class="manager">Manager</li></ul>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir"><a href="#but-concevoir">Concevoir</a></li><li class="verifier"><a href="#but-verifier">Vérifier</a></li><li class="manager"><a href="#but-manager">Manager</a></li></ul>
       <p class="resume">Un kart miniature propulsé par une hélice, piloté par une télécommande infrarouge qui encode direction et vitesse selon le protocole NEC. J'ai conçu sous ARES l'architecture de la carte récepteur, vérifié l'intégration mécanique et mené les mesures à l'oscilloscope.</p>
       <div class="cotes">
         <div class="cote"><span class="valeur">423 min</span><span class="ligne"></span><span class="sens">d'autonomie au minimum pour l'émetteur</span></div>
@@ -727,7 +787,7 @@ END_IF;</code></pre>
     <div>
       <h3>Robot guidé par une caméra Wi-Fi</h3>
       <p class="contexte">2025, BUT GEII</p>
-      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir">Concevoir</li></ul>
+      <ul class="but" aria-label="Compétences du BUT mobilisées"><li class="concevoir"><a href="#but-concevoir">Concevoir</a></li></ul>
       <p class="resume">La caméra n'est pas sur le robot : elle filme l'arène, repère le robot et sa cible, et envoie leurs positions en UDP sur le réseau Wi-Fi. J'ai écrit en C++ pour l'ESP32 deux bibliothèques, l'une pour le déplacement, l'autre pour calculer l'angle à corriger à partir de ces données.</p>
       <details>
         <summary>Code de pilotage</summary>
@@ -804,6 +864,178 @@ void loop() { lire_tram_reseau(); }</code></pre>
   </article>
 </section>
 
+<section class="bloc" id="geii" aria-labelledby="t-geii">
+  <div class="bloc-tete">
+    <h2 id="t-geii">Compétences GEII</h2>
+    <p>Les compétences du référentiel du BUT GEII, parcours AII, et ce qui prouve que je les ai acquises. Choisissez une compétence : chaque apprentissage critique renvoie au projet ou au dossier qui le démontre.</p>
+  </div>
+  <div class="selecteur">
+    <div role="tablist" class="onglets" aria-label="Compétences du BUT GEII">
+      <button type="button" role="tab" class="onglet" id="tab-concevoir" aria-controls="but-concevoir" aria-selected="true" style="--c: #e30613"><span class="onglet-nom">Concevoir</span><span class="onglet-compte">7 AC prouvés</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-verifier" aria-controls="but-verifier" aria-selected="false" tabindex="-1" style="--c: #f4a46a"><span class="onglet-nom">Vérifier</span><span class="onglet-compte">2 AC prouvés</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-maintenir" aria-controls="but-maintenir" aria-selected="false" tabindex="-1" style="--c: #f2c200"><span class="onglet-nom">Maintenir</span><span class="onglet-compte">1 AC prouvé</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-integrer" aria-controls="but-integrer" aria-selected="false" tabindex="-1" style="--c: #00a651"><span class="onglet-nom">Intégrer</span><span class="onglet-compte">1 AC prouvé</span></button>
+      <button type="button" role="tab" class="onglet" id="tab-manager" aria-controls="but-manager" aria-selected="false" tabindex="-1" style="--c: #e9a6d6"><span class="onglet-nom">Manager</span><span class="onglet-compte">G.1 prouvée</span></button>
+    </div>
+    <div role="tabpanel" class="panneau" id="but-concevoir" aria-labelledby="tab-concevoir" style="--c: #e30613">
+      <h3 class="panneau-titre">Concevoir</h3>
+      <p class="panneau-accroche">De la lecture du cahier des charges au dossier de conception et de fabrication.</p>
+        <div class="composante">
+          <h4><span>C.1</span> J'identifie les fonctions demandées à la lecture du cahier des charges</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC11.01</p>
+            <div>
+              <p class="ac-lib">Produire une analyse fonctionnelle d'un système simple</p>
+              <p class="ac-preuve">Diagrammes d'architecture de l'émetteur et du récepteur du kart. Sur Mugochaud, une incohérence du cahier des charges sur l'éclairage relevée et corrigée avec les chefs de projet.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#kart">Kart</a><a class="preuve-lien pdf" href="documents/kart-dossier-conception.pdf">DDC du kart<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+        <div class="composante">
+          <h4><span>C.2</span> Je propose une solution technique pour répondre à une fonction</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC21.01</p>
+            <div>
+              <p class="ac-lib">Proposer des solutions techniques liées à l'analyse fonctionnelle</p>
+              <p class="ac-preuve">Choix du capteur PT1000, du verrou à électro-aimant et du correcteur PI calculé sous Matlab pour Mugochaud. Grafcets de conduite et de production rédigés à partir du cahier des charges de la SAE.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien projet" href="#sae">SAE</a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+        <div class="composante">
+          <h4><span>C.3</span> J'affine une solution technique en m'appuyant sur un maquettage numérique et/ou matériel</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC11.02</p>
+            <div>
+              <p class="ac-lib">Réaliser un prototype pour des solutions techniques matériel et/ou logiciel</p>
+              <p class="ac-preuve">Carte récepteur du kart, robot Mini-Sumo, bibliothèques C++ du robot guidé par caméra.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#kart">Kart</a><a class="preuve-lien projet" href="#sumo">Mini-Sumo</a><a class="preuve-lien projet" href="#vision">Robot guidé par caméra</a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC21.02</p>
+            <div>
+              <p class="ac-lib">Dérisquer les solutions techniques retenues</p>
+              <p class="ac-preuve">En stage, détection côté serveur avec YOLO testée puis écartée, au profit de la détection embarquée dans les caméras.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC31.02</p>
+            <div>
+              <p class="ac-lib">Prouver la pertinence de ses choix technologiques</p>
+              <p class="ac-preuve">En stage, Genetec Security Center retenu parce qu'il affiche les classes de détection personnalisées, contrairement à WAVE.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+        <div class="composante">
+          <h4><span>C.4</span> Je rédige un dossier de conception et de fabrication</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC11.03</p>
+            <div>
+              <p class="ac-lib">Rédiger un dossier de fabrication à partir d'un dossier de conception</p>
+              <p class="ac-preuve">Dossiers de fabrication du Mini-Sumo et de l'émetteur et du récepteur du kart.</p>
+              <p class="ac-liens"><a class="preuve-lien pdf" href="documents/mini-sumo-dossier-fabrication.pdf">DDF du Mini-Sumo<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/kart-dossier-fabrication-recepteur.pdf">DDF récepteur<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/kart-dossier-fabrication-emetteur.pdf">DDF émetteur<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC31.03</p>
+            <div>
+              <p class="ac-lib">Rédiger un dossier de conception</p>
+              <p class="ac-preuve">Dossier de conception de Mugochaud (26 pages, en binôme) et du kart (85 pages, en équipe).</p>
+              <p class="ac-liens"><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/kart-dossier-conception.pdf">DDC du kart<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+    </div>
+    <div role="tabpanel" class="panneau" id="but-verifier" aria-labelledby="tab-verifier" style="--c: #f4a46a">
+      <h3 class="panneau-titre">Vérifier</h3>
+      <p class="panneau-accroche">Définir les essais, les mener et conclure sur la conformité au cahier des charges.</p>
+        <div class="composante">
+          <h4><span>V.1</span> J'applique, j'élabore, je rédige une procédure d'essais</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC12.01</p>
+            <div>
+              <p class="ac-lib">Appliquer une procédure d'essais</p>
+              <p class="ac-preuve">Essais mécaniques et validation de la coupure de la batterie à 6,7 V sur le Mini-Sumo. Mesures à l'oscilloscope des commandes du kart.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#sumo">Mini-Sumo</a><a class="preuve-lien projet" href="#kart">Kart</a></p>
+            </div>
+          </li>
+          <li class="ac">
+            <p class="ac-code">AC22.01</p>
+            <div>
+              <p class="ac-lib">Identifier les tests et mesures à mettre en place pour valider le fonctionnement d'un système</p>
+              <p class="ac-preuve">Six essais définis à partir de la matrice de vérification du cahier des charges de Mugochaud, résultats mesurés, produit déclaré conforme.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-verification.pdf">DDV de Mugochaud<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+    </div>
+    <div role="tabpanel" class="panneau" id="but-maintenir" aria-labelledby="tab-maintenir" style="--c: #f2c200">
+      <h3 class="panneau-titre">Maintenir</h3>
+      <p class="panneau-accroche">Diagnostiquer un dysfonctionnement et remettre un système en état.</p>
+        <div class="composante">
+          <h4><span>M.1</span> J'applique une opération de maintenance (préventive, corrective, améliorative) à un système</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC23.03</p>
+            <div>
+              <p class="ac-lib">Diagnostiquer un dysfonctionnement dans un système</p>
+              <p class="ac-preuve">En stage, diagnostic réseau complet d'une caméra Pelco défectueuse. Analyse et réparation de l'enceinte de Mugochaud.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#stage">Stage</a><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+    </div>
+    <div role="tabpanel" class="panneau" id="but-integrer" aria-labelledby="tab-integrer" style="--c: #00a651">
+      <h3 class="panneau-titre">Intégrer</h3>
+      <p class="panneau-accroche">Installer et mettre en service un système automatisé, parcours AII.</p>
+        <div class="composante">
+          <h4><span>I.1.1</span> J'exécute l'installation et la mise en service d'un système</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">AC24.02AII</p>
+            <div>
+              <p class="ac-lib">Exécuter la mise en service d'un système en respectant la procédure</p>
+              <p class="ac-preuve">Câblage de l'armoire et mise en service de l'automate S7-1200 de Mugochaud. Intégration des caméras dans Genetec Security Center pendant le stage.</p>
+              <p class="ac-liens"><a class="preuve-lien projet" href="#mugochaud">Mugochaud</a><a class="preuve-lien projet" href="#stage">Stage</a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+    </div>
+    <div role="tabpanel" class="panneau" id="but-manager" aria-labelledby="tab-manager" style="--c: #e9a6d6">
+      <h3 class="panneau-titre">Manager</h3>
+      <p class="panneau-accroche">Produire et archiver les documents qui accompagnent un projet.</p>
+        <div class="composante">
+          <h4><span>G.1</span> Je rédige et archive différents documents professionnels</h4>
+          <ul class="acs">
+          <li class="ac">
+            <p class="ac-code">G.1</p>
+            <div>
+              <p class="ac-lib">Rédiger et archiver des documents professionnels</p>
+              <p class="ac-preuve">Dossiers de conception, de fabrication et de vérification de mes projets, rapport de stage.</p>
+              <p class="ac-liens"><a class="preuve-lien pdf" href="documents/mugochaud-dossier-conception.pdf">DDC de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/mugochaud-dossier-verification.pdf">DDV de Mugochaud<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/mini-sumo-dossier-fabrication.pdf">DDF du Mini-Sumo<span class="sr"> (PDF)</span></a><a class="preuve-lien pdf" href="documents/kart-dossier-conception.pdf">DDC du kart<span class="sr"> (PDF)</span></a></p>
+            </div>
+          </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
 <section class="bloc bande" id="parcours" aria-labelledby="t-parcours">
   <div class="bloc-tete">
     <h2 id="t-parcours">Parcours</h2>
@@ -855,8 +1087,8 @@ void loop() { lire_tram_reseau(); }</code></pre>
 
 <section class="bloc" id="competences" aria-labelledby="t-competences">
   <div class="bloc-tete">
-    <h2 id="t-competences">Compétences</h2>
-    <p>Présentées comme une nomenclature : ce que j'utilise, par domaine.</p>
+    <h2 id="t-competences">Outils</h2>
+    <p>Ce que j'utilise, par domaine.</p>
   </div>
   <table class="nomenclature">
     <thead><tr><th scope="col">Domaine</th><th scope="col">Outils et notions</th></tr></thead>
@@ -898,5 +1130,46 @@ void loop() { lire_tram_reseau(); }</code></pre>
 </footer>
 
 </div>
+<script>
+/* Onglets des compétences GEII. Sans JavaScript, tous les panneaux restent visibles. */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.onglet'));
+  if (!tabs.length) return;
+  function ouvrir(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      ouvrir(t);
+      history.replaceState(null, '', '#' + t.getAttribute('aria-controls'));
+    });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key, j = null;
+      if (k === 'ArrowRight' || k === 'ArrowDown') j = (i + 1) % tabs.length;
+      else if (k === 'ArrowLeft' || k === 'ArrowUp') j = (i - 1 + tabs.length) % tabs.length;
+      else if (k === 'Home') j = 0;
+      else if (k === 'End') j = tabs.length - 1;
+      if (j !== null) { e.preventDefault(); ouvrir(tabs[j], true); }
+    });
+  });
+  // Lien vers une compétence (#but-concevoir…) : ouvre l'onglet et amène la section à l'écran
+  function depuisAncre() {
+    var id = location.hash.slice(1);
+    var tab = tabs.filter(function (t) { return t.getAttribute('aria-controls') === id; })[0];
+    if (!tab) return false;
+    ouvrir(tab);
+    document.getElementById('geii').scrollIntoView();
+    return true;
+  }
+  if (!depuisAncre()) ouvrir(tabs[0]);
+  window.addEventListener('hashchange', depuisAncre);
+})();
+</script>
 </body>
 </html>
