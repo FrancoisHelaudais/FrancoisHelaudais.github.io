@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lexique, portfolio de François Helaudais</title>
+<meta name="description" content="Les termes techniques du portfolio de François Helaudais, expliqués simplement : automatisme, réseaux, sûreté électronique, BUT GEII.">
+<meta name="author" content="François Helaudais">
+<link rel="canonical" href="https://francoishelaudais.github.io/lexique.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://francoishelaudais.github.io/lexique.html">
+<meta property="og:title" content="François Helaudais, portfolio">
+<meta property="og:description" content="Technicien réseaux en alternance chez Ensio Sud. Étudiant en BUT GEII (automatisme et informatique industrielle) à Bordeaux. Régulation PI sur automate Siemens, conception PCB, robotique.">
+<meta property="og:image" content="https://francoishelaudais.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cartouche de plan au nom de François Helaudais, technicien réseaux en alternance">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://francoishelaudais.github.io/og-image.jpg">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3Cpath d='M1 22h30M16 22v9' stroke='%23000' stroke-width='1.5'/%3E%3Ctext x='16' y='17' font-family='Arial' font-size='12' text-anchor='middle'%3EFH%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="fonts/osifont.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/b612.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#ffffff">
+
+<style>
+/* Lettrage ISO 3098 des plans (osifont) pour tout ce qui relève du dessin ;
+   B612, dessinée pour les écrans de cockpit, pour le texte courant. */
+@font-face { font-family: 'Osifont'; src: url(fonts/osifont.woff2) format('woff2'); font-display: swap; }
+@font-face { font-family: 'B612'; font-weight: 400; src: url(fonts/b612.woff2) format('woff2'); font-display: swap; }
+@font-face { font-family: 'B612'; font-weight: 700; src: url(fonts/b612-bold.woff2) format('woff2'); font-display: swap; }
+@font-face { font-family: 'B612'; font-weight: 400; font-style: italic; src: url(fonts/b612-italic.woff2) format('woff2'); font-display: swap; }
+
+:root {
+  --papier: #ffffff;
+  --encre: #000000;
+  --trame: #b9c0ca;
+  --annot: #555b66;
+  --bleu: #1d4396;
+  --rouge: #c8102e;
+  --plan: #1d4396;      /* encre bleue des cadres, cotes et repères */
+  --cuivre: #b4541a;    /* résultats mesurés : cotes */
+  --teinte: #eaf0fa;    /* fond des cases de cartouche et d'en-têtes */
+  --teinte-2: #f5f8fd;
+  --trait: 1.5px;
+  --fin: 1px;
+  --lettrage: 'Osifont', 'Arial Narrow', sans-serif;
+  --texte: 'B612', 'Segoe UI', sans-serif;
+  --col: 300px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--papier);
+  color: var(--encre);
+  font-family: var(--texte);
+  font-size: 15.5px;
+  line-height: 1.62;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--bleu); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--bleu); outline-offset: 3px; }
+::selection { background: #dfe7f7; }
+
+.page { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Barre du haut ── */
+.barre {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 18px 0 14px;
+  border-bottom: var(--trait) solid var(--plan);
+}
+.barre .nom { font-family: var(--lettrage); font-size: 21px; color: var(--encre); text-decoration: none; }
+.barre nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14.5px; }
+.barre nav a { color: var(--encre); text-decoration: none; }
+.barre nav a:hover { color: var(--bleu); text-decoration: underline; }
+
+/* ── Feuille de garde (hero) ──
+   Double cadre de plan avec repères de zones dans la marge. */
+.feuille {
+  position: relative;
+  margin: 28px 0 0;
+  border: var(--fin) solid var(--plan);
+  padding: 22px;
+}
+.feuille-cadre {
+  border: 2px solid var(--plan);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+.zones { position: absolute; font-family: var(--lettrage); font-size: 12px; color: var(--plan); pointer-events: none; }
+.zones-h { left: 22px; right: 22px; top: 2px; display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; }
+.zones-h.bas { top: auto; bottom: 2px; }
+.zones-v { top: 22px; bottom: 22px; left: 6px; display: grid; grid-template-rows: repeat(4, 1fr); align-items: center; }
+.zones-v.droite { left: auto; right: 6px; }
+.zones-h span + span { border-left: var(--fin) solid var(--trame); }
+
+.garde-texte { grid-row: span 2; padding: 44px 40px 36px; display: flex; flex-direction: column; }
+h1 {
+  font-family: var(--lettrage);
+  font-weight: 400;
+  font-size: clamp(52px, 7.4vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+}
+.intro { margin-top: 30px; font-size: 18.5px; line-height: 1.55; max-width: 32em; }
+.intro + .intro { margin-top: 12px; font-size: 16px; color: var(--annot); }
+.garde-notes { margin-top: auto; padding-top: 40px; font-size: 14.5px; line-height: 1.7; }
+.garde-notes p:first-child { color: var(--plan); font-family: var(--lettrage); font-size: 17px; margin-bottom: 4px; }
+.actions { padding-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+.bouton {
+  display: inline-block; padding: 10px 16px;
+  border: var(--trait) solid var(--plan);
+  color: var(--encre); text-decoration: none; font-size: 15px;
+}
+.bouton:hover { background: var(--encre); color: var(--papier); }
+.bouton { border-color: var(--plan); color: var(--plan); }
+.bouton:hover { background: var(--teinte); color: var(--plan); }
+.bouton.plein { background: var(--plan); color: var(--papier); }
+.bouton.plein:hover { background: #142f6b; border-color: #142f6b; color: var(--papier); }
+
+.garde-vue { border-left: 2px solid var(--plan); display: flex; flex-direction: column; }
+.vue { position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-bottom: var(--fin) solid var(--plan); }
+.vue img { width: 100%; height: 100%; object-fit: cover; }
+.vue svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.vue .repere circle.bulle { fill: var(--papier); stroke: var(--plan); stroke-width: 5; }
+.vue .repere circle.point { fill: var(--plan); stroke: var(--papier); stroke-width: 3; }
+.vue .repere line { stroke: var(--plan); stroke-width: 5; }
+.vue .repere text { fill: var(--plan); font-family: var(--lettrage); font-size: 44px; text-anchor: middle; dominant-baseline: central; }
+.vue-titre { padding: 10px 16px 0; font-family: var(--lettrage); font-size: 15px; }
+.legende { list-style: none; padding: 6px 16px 14px; font-size: 13.5px; line-height: 1.5; columns: 2; column-gap: 18px; }
+.legende li { display: flex; gap: 8px; align-items: baseline; break-inside: avoid; padding: 2px 0; }
+.legende b { color: var(--plan); font-family: var(--lettrage); font-weight: 400; font-size: 14px; flex: none; width: 18px; height: 18px; border: var(--fin) solid var(--plan); border-radius: 50%; display: inline-grid; place-items: center; line-height: 1; transform: translateY(3px); }
+
+/* Cartouche : bloc d'identification en bas à droite d'un plan */
+.cartouche {
+  grid-column: 2;
+  border-left: 2px solid var(--plan);
+  border-top: 2px solid var(--plan);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  font-size: 13px;
+  gap: 1px;
+  background: var(--plan);
+}
+.cartouche > div { padding: 6px 10px 7px; background: var(--papier); }
+.cartouche > div.lbl { background: var(--teinte); }
+.cartouche .lbl { color: var(--plan); font-size: 11.5px; white-space: nowrap; }
+.cartouche .val { font-family: var(--lettrage); font-size: 16.5px; line-height: 1.25; }
+.cartouche .large { grid-column: span 3; }
+.cartouche .titre { font-family: var(--lettrage); font-size: 26px; line-height: 1.1; }
+
+/* Marque de révision : triangle avec l'indice, comme sur un plan modifié */
+.rev { display: inline-block; width: 1.25em; height: 1.1em; vertical-align: -0.12em; margin-left: 0.25em; }
+.rev polygon { fill: none; stroke: var(--rouge); stroke-width: 1.6; }
+.rev text { fill: var(--rouge); font-family: var(--lettrage); font-size: 11px; text-anchor: middle; }
+
+/* ── Sections ── */
+section.bloc { padding: 72px 0 0; }
+.bloc-tete { display: grid; grid-template-columns: var(--col) minmax(0, 1fr); gap: 32px; align-items: end; padding-bottom: 16px; border-bottom: var(--trait) solid var(--plan); }
+h2 { color: var(--plan); font-family: var(--lettrage); font-weight: 400; font-size: clamp(36px, 4.2vw, 52px); line-height: 1; }
+.bloc-tete p { color: var(--annot); max-width: 36em; }
+
+/* ── Projets ── */
+.projet { display: grid; grid-template-columns: var(--col) minmax(0, 1fr); gap: 32px; padding: 34px 0 38px; border-bottom: var(--fin) solid var(--plan); }
+.projet-media a { display: block; border: var(--fin) solid var(--plan); }
+.projet-media img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+.feuille-cadre { background-color: var(--papier); }
+.garde-texte { background-image: linear-gradient(rgba(29,67,150,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(29,67,150,0.06) 1px, transparent 1px); background-size: 20px 20px; }
+.projet-media figcaption { font-size: 12.5px; color: var(--annot); margin-top: 6px; }
+h3 { font-family: var(--lettrage); font-weight: 400; font-size: 30px; line-height: 1.12; }
+.projet .contexte { color: var(--annot); font-size: 14px; margin-top: 4px; }
+.projet .resume { margin-top: 14px; max-width: 42em; }
+
+/* Cotes : les résultats mesurés présentés comme des lignes de cote */
+.cotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px 28px; margin-top: 26px; max-width: 760px; }
+.cote { text-align: center; }
+.cote .valeur { color: var(--cuivre); font-family: var(--lettrage); font-size: 27px; line-height: 1; display: block; margin-bottom: 5px; }
+.cote .ligne { display: block; position: relative; height: 13px; border-left: var(--fin) solid var(--cuivre); border-right: var(--fin) solid var(--cuivre); }
+.cote .ligne::before { content: ''; position: absolute; left: 0; right: 0; top: 6px; border-top: var(--fin) solid var(--cuivre); }
+.cote .ligne {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M0 3.5L11 0.6V6.4Z' fill='%23b4541a'/%3E%3C/svg%3E") left center / 11px 7px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M11 3.5L0 0.6V6.4Z' fill='%23b4541a'/%3E%3C/svg%3E") right center / 11px 7px no-repeat;
+}
+.cote .sens { display: block; margin-top: 6px; font-size: 13px; line-height: 1.4; color: var(--annot); }
+
+details { margin-top: 26px; max-width: 760px; }
+summary {
+  cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14.5px; color: var(--bleu); list-style: none; user-select: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::before {
+  background: var(--teinte);
+  content: '+'; font-family: var(--lettrage); font-size: 18px; line-height: 1;
+  width: 20px; height: 20px; display: grid; place-items: center;
+  border: var(--fin) solid var(--bleu);
+}
+details[open] summary::before { content: '−'; }
+.detail { padding-top: 18px; display: grid; gap: 22px; }
+.detail h4 { font-family: var(--lettrage); font-weight: 400; font-size: 19px; margin-bottom: 6px; }
+.detail ul { padding-left: 18px; }
+.detail li { margin: 3px 0; }
+.detail li::marker { color: var(--annot); }
+.outils { font-size: 14.5px; }
+pre {
+  font-family: 'Consolas', 'DejaVu Sans Mono', monospace; font-size: 12.5px; line-height: 1.55;
+  border: var(--fin) solid var(--plan); padding: 14px 16px; overflow-x: auto; background: #f7f8fa;
+  tab-size: 4;
+}
+.vignettes { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.vignettes a { display: block; border: var(--fin) solid var(--plan); }
+.vignettes img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.vignettes .trace img { object-fit: contain; background: #fff; }
+.vignettes figcaption { font-size: 12.5px; color: var(--annot); margin-top: 5px; }
+
+/* ── Parcours ── */
+.etape { display: grid; grid-template-columns: var(--col) minmax(0, 1fr); gap: 32px; padding: 22px 0; border-bottom: var(--fin) solid var(--plan); }
+.etape .quand { font-family: var(--lettrage); font-size: 19px; line-height: 1.3; }
+.etape h3 { font-size: 24px; }
+.etape .ou { color: var(--annot); font-size: 14.5px; }
+.etape p:not(.ou) { margin-top: 6px; max-width: 42em; }
+
+/* ── Compétences : nomenclature ── */
+.nomenclature { width: 100%; border-collapse: collapse; margin-top: 28px; border: 2px solid var(--plan); }
+.nomenclature th, .nomenclature td { border: var(--fin) solid var(--plan); padding: 10px 14px; text-align: left; vertical-align: top; }
+.nomenclature thead th { background: var(--teinte); color: var(--plan); font-family: var(--lettrage); font-weight: 400; font-size: 16px; border-bottom: 2px solid var(--plan); }
+.nomenclature tbody th { background: var(--teinte-2); font-family: var(--lettrage); font-weight: 400; font-size: 19px; width: var(--col); }
+.nomenclature .note { display: block; font-family: var(--texte); font-size: 12.5px; color: var(--annot); }
+
+/* ── Contact ── */
+.contact { display: grid; grid-template-columns: var(--col) minmax(0, 1fr); gap: 32px; padding-top: 28px; }
+.contact .mail { font-family: var(--lettrage); font-size: clamp(24px, 3.4vw, 40px); line-height: 1.15; word-break: break-word; }
+.contact ul { list-style: none; margin-top: 18px; display: grid; gap: 4px; }
+.contact .apart { margin-top: 26px; color: var(--annot); max-width: 40em; }
+
+footer { padding: 26px 0 40px; font-size: 13px; color: var(--annot); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* ── Petits écrans ── */
+@media (max-width: 900px) {
+  .feuille { padding: 12px; }
+  .zones { display: none; }
+  .feuille-cadre { grid-template-columns: 1fr; }
+  .garde-texte { grid-row: auto; padding: 30px 22px 28px; }
+  .garde-vue { border-left: 0; border-top: 2px solid var(--plan); }
+  .cartouche { grid-column: 1; border-left: 0; }
+  .bloc-tete, .projet, .etape, .contact { grid-template-columns: 1fr; gap: 14px; }
+  .projet-media { max-width: 340px; }
+  .nomenclature tbody th { width: auto; }
+}
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .barre { flex-direction: column; gap: 6px; }
+  .barre nav { gap: 14px; }
+  .legende { columns: 1; }
+  .cartouche { grid-template-columns: auto 1fr; }
+  .cartouche .large { grid-column: span 1; }
+  .nomenclature, .nomenclature tbody, .nomenclature tr, .nomenclature th, .nomenclature td { display: block; width: 100%; }
+  .nomenclature thead { display: none; }
+  .nomenclature tbody th { border-bottom: 0; padding-bottom: 0; }
+  .nomenclature td { border-top: 0; }
+}
+
+/* ── Parcours en Grafcet ──
+   Étapes (carrés numérotés), liaisons verticales, transitions (barres)
+   avec leur réceptivité, et actions associées à droite. */
+.bande { background: var(--teinte-2); box-shadow: 0 0 0 100vmax var(--teinte-2); clip-path: inset(0 -100vmax); padding-bottom: 72px; }
+.bande .bloc-tete { border-bottom-color: var(--plan); }
+.grafcet { list-style: none; margin-top: 34px; max-width: 900px; }
+.grafcet li { display: grid; grid-template-columns: 76px minmax(0, 1fr); column-gap: 30px; }
+.g-col { position: relative; display: flex; justify-content: center; }
+.g-col::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 2px solid var(--plan); transform: translateX(-1px); }
+.g-etape.initiale .g-col::before { top: 28px; }
+.g-num {
+  position: relative; z-index: 1; width: 56px; height: 56px; margin-top: 0;
+  display: grid; place-items: center;
+  font-family: var(--lettrage); font-size: 26px; color: var(--plan);
+  background: var(--papier); border: 2px solid var(--plan);
+}
+.g-etape.initiale .g-num { box-shadow: inset 0 0 0 4px var(--papier), inset 0 0 0 6px var(--plan); }
+.g-etape.active .g-num::after { content: ''; position: absolute; bottom: 6px; left: 50%; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: var(--rouge); }
+.g-etape.active .g-num { background: var(--teinte); }
+.g-action { position: relative; background: var(--papier); border: 1.5px solid var(--plan); padding: 14px 18px 16px; margin-bottom: 0; }
+.g-action::before { content: ''; position: absolute; left: -31px; top: 27px; width: 30px; border-top: 2px solid var(--plan); }
+.g-etape.active .g-action { border-width: 2.5px; }
+.g-date { font-family: var(--lettrage); font-size: 17px; color: var(--plan); }
+.g-action h3 { font-size: 24px; margin-top: 2px; }
+.g-action .ou { color: var(--annot); font-size: 14.5px; }
+.g-action p:not(.g-date):not(.ou) { margin-top: 6px; max-width: 44em; }
+.g-parallele { border-top: 1px dashed var(--plan); padding-top: 8px; margin-top: 10px !important; font-size: 14.5px; }
+.g-parallele b { font-family: var(--lettrage); font-weight: 400; font-size: 16px; color: var(--plan); margin-right: 6px; }
+.g-transition { min-height: 54px; }
+.g-transition .g-col { align-items: center; }
+.g-barre { position: relative; z-index: 1; align-self: center; width: 30px; height: 3px; background: var(--encre); }
+.g-cond { font-size: 14.5px; color: var(--encre); align-self: center; }
+.g-transition.suite .g-col::before { border-left-style: dashed; bottom: -30px; }
+.g-transition.suite { margin-bottom: 30px; }
+@media (max-width: 560px) {
+  .grafcet li { grid-template-columns: 50px minmax(0, 1fr); column-gap: 16px; }
+  .g-num { width: 44px; height: 44px; font-size: 21px; }
+  .g-action::before { left: -17px; top: 21px; width: 16px; }
+  .g-etape.initiale .g-col::before { top: 22px; }
+}
+
+/* ── Projets : photos plus grandes, en alternance gauche / droite ── */
+.projet { grid-template-columns: 380px minmax(0, 1fr); }
+.projet:nth-of-type(even) { grid-template-columns: minmax(0, 1fr) 380px; }
+.projet:nth-of-type(even) .projet-media { order: 2; }
+.projet-media img { aspect-ratio: 4 / 3; }
+#mugochaud .projet-media img, #kart .projet-media img, #vision .projet-media img { aspect-ratio: 4 / 4.4; }
+.projet#ia { grid-template-columns: 380px minmax(0, 1fr); }
+.projet#ia > div { grid-column: 2; }
+
+/* ── Un seul mouvement : les repères de la photo se tracent au chargement ── */
+@media (prefers-reduced-motion: no-preference) {
+  .vue .repere line { stroke-dasharray: 320; stroke-dashoffset: 320; animation: trace 0.7s ease-out forwards; }
+  .vue .repere circle { opacity: 0; animation: apparait 0.3s ease-out forwards; }
+  .vue .repere:nth-child(1) line { animation-delay: 0.3s; } .vue .repere:nth-child(1) circle { animation-delay: 0.9s; }
+  .vue .repere:nth-child(2) line { animation-delay: 0.5s; } .vue .repere:nth-child(2) circle { animation-delay: 1.1s; }
+  .vue .repere:nth-child(3) line { animation-delay: 0.7s; } .vue .repere:nth-child(3) circle { animation-delay: 1.3s; }
+  .vue .repere:nth-child(4) line { animation-delay: 0.9s; } .vue .repere:nth-child(4) circle { animation-delay: 1.5s; }
+  .vue .repere:nth-child(5) line { animation-delay: 1.1s; } .vue .repere:nth-child(5) circle { animation-delay: 1.7s; }
+  .vue .repere text { opacity: 0; animation: apparait 0.3s ease-out forwards; animation-delay: 1.9s; }
+}
+@keyframes trace { to { stroke-dashoffset: 0; } }
+@keyframes apparait { to { opacity: 1; } }
+
+/* ── Petits écrans ── */
+@media (max-width: 900px) {
+  .projet, .projet:nth-of-type(even), .projet#ia { grid-template-columns: minmax(0, 1fr); }
+  .projet#ia > div { grid-column: auto; }
+  .cotes { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  .projet:nth-of-type(even) .projet-media { order: 0; }
+}
+
+
+/* ── Projet en cours : badge, chaîne des Grafcets, état d'avancement ── */
+.en-cours { display: inline-block; vertical-align: 6px; margin-left: 8px; font-family: var(--texte); font-size: 12px; color: var(--plan); border: 1.5px solid var(--plan); background: var(--teinte); padding: 1px 8px; }
+.chaine { list-style: none; display: flex; gap: 26px; margin-top: 22px; max-width: 820px; }
+.chaine li { position: relative; border: 1.5px solid var(--plan); padding: 6px 10px 7px; font-size: 13.5px; line-height: 1.35; background: var(--papier); flex: 1 1 0; min-width: 0; }
+.chaine li b { display: block; font-family: var(--lettrage); font-weight: 400; font-size: 15px; color: var(--plan); }
+.chaine li + li::before { content: ''; position: absolute; left: -24px; top: 50%; width: 20px; border-top: 1.5px solid var(--plan); }
+.chaine li + li::after { content: ''; position: absolute; left: -9px; top: 50%; margin-top: -4px; border-left: 7px solid var(--plan); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+.chaine li.sync + li::before { border-top-style: dashed; }
+.chaine li.sync + li::after { display: none; }
+.etat { margin-top: 22px; max-width: 760px; display: grid; gap: 8px; }
+.etat p { padding-left: 14px; border-left: 3px solid var(--plan); font-size: 14.5px; }
+.etat b { display: block; font-family: var(--lettrage); font-weight: 400; font-size: 16px; color: var(--plan); }
+.etat p.suite { border-left-style: dashed; }
+@media (max-width: 900px) {
+  .chaine { gap: 22px; flex-direction: column; }
+  .chaine li { max-width: none; }
+  .chaine li + li::before { left: 22px; top: -20px; width: 0; height: 18px; border-top: 0; border-left: 1.5px solid var(--plan); }
+  .chaine li.sync + li::before { border-top: 0; border-left-style: dashed; }
+  .chaine li + li::after { left: 18px; top: -6px; margin-top: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 7px solid var(--plan); border-bottom: 0; }
+}
+
+
+
+
+/* ── Compétences du BUT mobilisées par un projet ── */
+.but { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 10px; }
+.but li { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; padding: 2px 9px 3px 7px; border: 1px solid var(--plan); color: var(--plan); background: var(--papier); }
+.but li::before { content: ''; width: 10px; height: 10px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+.but .concevoir { --c: #e30613; } .but .verifier { --c: #f4a46a; } .but .maintenir { --c: #f2c200; } .but .integrer { --c: #00a651; } .but .manager { --c: #e9a6d6; }
+
+/* ── Documents d'un projet : la preuve ── */
+.docs { margin-top: 26px; max-width: 760px; }
+.docs h4 { font-family: var(--lettrage); font-weight: 400; font-size: 19px; color: var(--plan); margin-bottom: 6px; }
+.docs ul { list-style: none; border-top: 1.5px solid var(--plan); }
+.docs li { border-bottom: 1px solid var(--plan); }
+.docs a { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; column-gap: 12px; align-items: start; padding: 10px 6px; text-decoration: none; color: var(--encre); }
+.docs a::before { content: ''; grid-row: span 2; width: 15px; height: 19px; margin-top: 2px; border: 1.5px solid var(--plan); background: linear-gradient(225deg, var(--plan) 0 4px, var(--papier) 4px); }
+.docs a:hover { background: var(--teinte-2); }
+.docs a:hover .doc-titre { color: var(--plan); text-decoration: underline; text-underline-offset: 3px; }
+.doc-titre { font-family: var(--lettrage); font-size: 17px; line-height: 1.25; }
+.doc-info { font-size: 13px; color: var(--annot); white-space: nowrap; }
+.doc-preuve { grid-column: 2 / -1; font-size: 13.5px; color: var(--annot); }
+@media (max-width: 560px) { .docs a { grid-template-columns: 22px minmax(0, 1fr); } .doc-info { grid-column: 2; } }
+
+
+/* ── Compétences GEII : sélecteur à onglets ── */
+.selecteur { margin-top: 30px; border: 2px solid var(--plan); }
+.onglets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--plan); border-bottom: 2px solid var(--plan); }
+.onglet {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  padding: 14px 16px 14px 34px; border: 0; background: var(--papier); color: var(--plan); text-align: left;
+  font: inherit; cursor: pointer;
+}
+.onglet::before { content: ''; position: absolute; left: 14px; top: 20px; width: 11px; height: 11px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+.onglet-nom { font-family: var(--lettrage); font-size: 21px; line-height: 1.1; }
+.onglet-compte { font-size: 12.5px; color: var(--annot); }
+.onglet:hover { background: var(--teinte-2); }
+.onglet[aria-selected="true"] { background: var(--plan); color: var(--papier); }
+.onglet[aria-selected="true"] .onglet-compte { color: #d4def3; }
+.onglet[aria-selected="true"]::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 5px; background: var(--c); }
+.onglet:focus-visible { outline-offset: -4px; outline-color: var(--papier); }
+.panneau { padding: 26px 28px 30px; }
+.panneau[hidden] { display: none; }
+.js-off .panneau + .panneau { border-top: 2px solid var(--plan); }
+.panneau-titre { font-size: 30px; color: var(--plan); display: flex; align-items: center; gap: 12px; }
+.panneau-titre::before { content: ''; width: 16px; height: 16px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+.panneau-accroche { color: var(--annot); margin-top: 2px; }
+.composante { margin-top: 24px; }
+.composante h4 { font-family: var(--texte); font-weight: 700; font-size: 15px; padding-bottom: 6px; border-bottom: 1.5px solid var(--plan); }
+.composante h4 span { font-family: var(--lettrage); font-weight: 400; font-size: 18px; color: var(--plan); margin-right: 6px; }
+.acs { list-style: none; }
+.ac { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--trame); }
+.ac-code { font-family: var(--lettrage); font-size: 20px; color: var(--plan); line-height: 1.2; }
+.ac-lib { font-size: 13.5px; color: var(--annot); }
+.ac-preuve { margin-top: 3px; max-width: 46em; }
+.ac-liens { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.preuve-lien { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px 5px; font-size: 13.5px; text-decoration: none; border: 1.5px solid var(--plan); color: var(--plan); background: var(--papier); }
+.preuve-lien:hover { background: var(--plan); color: var(--papier); }
+.preuve-lien.projet::before { content: ''; width: 8px; height: 8px; border: 1.5px solid currentColor; border-radius: 50%; }
+.preuve-lien.pdf { background: var(--teinte); }
+.preuve-lien.pdf:hover { background: var(--plan); }
+.preuve-lien.pdf::before { content: ''; width: 9px; height: 12px; border: 1.5px solid currentColor; background: linear-gradient(225deg, currentColor 0 3px, transparent 3px); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.but a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.but li:has(a):hover { background: var(--teinte); }
+.but li:has(a) { padding: 0; }
+.but li:has(a)::before { display: none; }
+.but li a { padding: 2px 9px 3px 7px; }
+.but li a::before { content: ''; width: 10px; height: 10px; background: var(--c); border: 1px solid rgba(0,0,0,0.25); }
+@media (max-width: 900px) {
+  .onglets { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .onglet:last-child { grid-column: span 2; }
+  .ac { grid-template-columns: 1fr; gap: 4px; }
+  .panneau { padding: 20px 16px 24px; }
+}
+@media (max-width: 560px) {
+  .onglets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .onglet:last-child { grid-column: 1 / -1; }
+  .onglet { padding: 11px 10px 11px 28px; }
+  .onglet::before { left: 10px; top: 16px; }
+  .onglet-nom { font-size: 18px; }
+}
+
+
+/* ── Synoptique anonymisé (alternance) ── */
+.synoptique-cadre { border: var(--fin) solid var(--plan); background: var(--papier); background-image: linear-gradient(rgba(29,67,150,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(29,67,150,0.05) 1px, transparent 1px); background-size: 19px 19px; }
+.synoptique { display: block; width: 100%; height: auto; }
+.synoptique .s-cadre { fill: none; stroke: var(--plan); stroke-width: 1.5; }
+.synoptique .s-boite { fill: var(--papier); stroke: var(--plan); stroke-width: 1; }
+.synoptique .s-coeur { fill: var(--plan); }
+.synoptique .s-zone { fill: var(--papier); stroke: var(--plan); stroke-width: 1.2; }
+.synoptique .s-zone.nouv { fill: var(--teinte); stroke-dasharray: 4 2; }
+.synoptique .s-lien { stroke: var(--plan); stroke-width: 1.2; }
+.synoptique text { font-family: var(--texte); fill: var(--encre); }
+.synoptique .s-titre { font-family: var(--lettrage); font-size: 13px; fill: var(--plan); }
+.synoptique .s-lab { font-family: var(--lettrage); font-size: 12px; }
+.synoptique .s-lab.inv { fill: var(--papier); }
+.synoptique .s-sub { font-size: 9.5px; fill: var(--annot); }
+.synoptique .s-cam { font-size: 11px; fill: var(--cuivre); }
+
+.ac-niv { display: block; font-family: var(--texte); font-size: 11.5px; color: var(--annot); margin-top: 2px; }
+
+.hero-ia .repere text { font-size: 34px; }
+.hero-ia .repere line, .hero-ia .repere circle.bulle { stroke-width: 3.5; }
+
+/* ── Termes expliqués et lexique ── */
+a.terme { color: inherit; text-decoration: underline dotted var(--plan); text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: help; }
+a.terme:hover, a.terme[aria-expanded="true"] { background: var(--teinte); text-decoration-style: solid; }
+.bulle-def { position: absolute; z-index: 50; max-width: min(340px, calc(100vw - 32px)); padding: 10px 13px 11px; background: var(--papier); color: var(--encre); border: 1.5px solid var(--plan); border-top: 4px solid var(--cuivre); box-shadow: 3px 3px 0 var(--teinte); font-size: 14px; line-height: 1.45; }
+.bulle-def b { display: block; font-family: var(--lettrage); font-weight: 400; font-size: 17px; color: var(--plan); margin-bottom: 2px; }
+.bulle-def a { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--plan); }
+.lexique .nomenclature tbody th { font-size: 17px; }
+.lexique tr:target { outline: 3px solid var(--cuivre); outline-offset: -3px; }
+.lexique tr { scroll-margin-top: 90px; }
+.lexique .retour { margin: 0 0 18px; }
+.lexique .retour a { color: var(--plan); }
+.lexique h1 { font-family: var(--lettrage); font-weight: 400; color: var(--plan); font-size: clamp(36px, 4.2vw, 52px); line-height: 1; }
+.barre nav a[aria-current="page"] { color: var(--plan); text-decoration: underline; text-underline-offset: 5px; }
+.filtre { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 24px; font-size: 14px; color: var(--annot); }
+.filtre input { flex: 1 1 240px; max-width: 380px; font: inherit; font-size: 16px; color: var(--encre); padding: 8px 11px; border: 1.5px solid var(--plan); background: var(--papier); border-radius: 0; }
+.filtre input:focus { outline: 3px solid var(--teinte); outline-offset: 0; }
+.lexique .aucun { margin-top: 14px; color: var(--annot); }
+@media print { a.terme { text-decoration: none; } .bulle-def { display: none; } }
+
+@media print {
+  .barre nav, .actions, summary { display: none; }
+  details > .detail { display: grid; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="page">
+
+<header class="barre">
+  <a class="nom" href="./">François Helaudais</a>
+  <nav aria-label="Sections">
+    <a href="./#projets">Projets</a>
+    <a href="./#parcours">Parcours</a>
+    <a href="./#geii">Compétences GEII</a>
+    <a href="./#competences">Outils</a>
+    <a href="lexique.html" aria-current="page">Lexique</a>
+    <a href="./#contact">Contact</a>
+    <a href="cv_francois_helaudais.pdf">CV (PDF)</a>
+  </nav>
+</header>
+
+<main>
+<section class="bloc lexique" id="lexique" aria-labelledby="t-lexique">
+  <p class="retour"><a href="./">&larr; Retour au portfolio</a></p>
+  <div class="bloc-tete">
+    <h1 id="t-lexique">Lexique</h1>
+    <p>Les termes techniques employés dans le portfolio, expliqués simplement. Dans le portfolio, ils sont soulignés en pointillés : un clic affiche directement leur définition.</p>
+  </div>
+  <label class="filtre"><span>Chercher un terme</span><input type="search" id="filtre" autocomplete="off" placeholder="Ex. : switch, automate…"></label>
+  <table class="nomenclature">
+    <thead><tr><th scope="col">Terme</th><th scope="col">En clair</th></tr></thead>
+    <tbody>
+      <tr id="lx-ip"><th scope="row">Adresse IP, adressage</th><td>Numéro qui identifie chaque appareil sur un réseau. Un adressage « statique » signifie que chaque numéro est fixé à la main. Une caméra « IP » est une caméra branchée sur le réseau informatique.</td></tr>
+      <tr id="lx-outils-ia"><th scope="row">AI On-site Learning, WiseDetector</th><td>Les outils des caméras i-PRO et Hanwha qui permettent d&#x27;apprendre un nouvel objet à la caméra sans programmer.</td></tr>
+      <tr id="lx-alternance"><th scope="row">Alternance</th><td>Formation qui partage le temps entre l&#x27;école et une entreprise, avec un vrai contrat de travail.</td></tr>
+      <tr id="lx-ao"><th scope="row">Appel d&#x27;offres, marché public</th><td>Procédure par laquelle un organisme public met plusieurs entreprises en concurrence pour réaliser un projet.</td></tr>
+      <tr id="lx-ac"><th scope="row">Apprentissage critique (AC)</th><td>Un savoir-faire précis du programme du BUT que l&#x27;étudiant doit prouver, de niveau 1 (1re année) à niveau 3 (3e année).</td></tr>
+      <tr id="lx-ares"><th scope="row">ARES, KiCad, Proteus</th><td>Logiciels de conception de cartes électroniques.</td></tr>
+      <tr id="lx-reseau-diag"><th scope="row">ARP, RJ45, NTP</th><td>ARP : la table qui associe l&#x27;adresse de chaque appareil à son identifiant matériel. RJ45 : la prise des câbles réseau. NTP : le service qui met les appareils à l&#x27;heure.</td></tr>
+      <tr id="lx-automate"><th scope="row">Automate</th><td>Petit ordinateur industriel qui pilote une machine : il lit des capteurs et commande moteurs, vérins ou voyants selon un programme.</td></tr>
+      <tr id="lx-lipo"><th scope="row">Batterie LiPo</th><td>Batterie lithium-polymère, légère et puissante, courante en modélisme.</td></tr>
+      <tr id="lx-but-geii"><th scope="row">BUT GEII</th><td>Bachelor universitaire de technologie « Génie électrique et informatique industrielle » : un diplôme bac+3 préparé en IUT, qui forme des techniciens en électricité, électronique, automatisme et informatique industrielle.</td></tr>
+      <tr id="lx-cdc"><th scope="row">Cahier des charges</th><td>Document qui liste ce que le produit doit faire et les contraintes à respecter. C&#x27;est la référence pour vérifier le résultat.</td></tr>
+      <tr id="lx-pcb"><th scope="row">Carte électronique (PCB)</th><td>Plaque sur laquelle sont soudés et reliés les composants électroniques.</td></tr>
+      <tr id="lx-cctp"><th scope="row">CCTP</th><td>Cahier des clauses techniques particulières : la partie d&#x27;un appel d&#x27;offres public qui décrit en détail ce que l&#x27;installation doit contenir.</td></tr>
+      <tr id="lx-classe"><th scope="row">Classe (IA)</th><td>Catégorie d&#x27;objet qu&#x27;une IA sait reconnaître : personne, véhicule, ou un objet qu&#x27;on lui apprend, comme un extincteur.</td></tr>
+      <tr id="lx-controle-acces"><th scope="row">Contrôle d&#x27;accès</th><td>Système qui autorise ou refuse l&#x27;ouverture d&#x27;une porte, avec un badge ou un code.</td></tr>
+      <tr id="lx-du"><th scope="row">D.U.</th><td>Diplôme universitaire : une formation complémentaire délivrée par une université, ici suivie en plus du BUT.</td></tr>
+      <tr id="lx-dossiers"><th scope="row">DDC, DDF, DDV</th><td>Les trois dossiers d&#x27;un projet : conception (comment le produit est conçu), fabrication (comment le construire) et vérification (les essais qui prouvent qu&#x27;il fonctionne).</td></tr>
+      <tr id="lx-drawio"><th scope="row">draw.io</th><td>Logiciel gratuit de dessin de schémas.</td></tr>
+      <tr id="lx-enregistreur"><th scope="row">Enregistreur, voies</th><td>Boîtier qui enregistre les images des caméras sur des disques durs. Une « voie » correspond à une caméra.</td></tr>
+      <tr id="lx-festo"><th scope="row">Festo CP Lab</th><td>Ligne de production miniature de la marque Festo, utilisée pour l&#x27;enseignement de l&#x27;automatisme.</td></tr>
+      <tr id="lx-reglages"><th scope="row">Gain, WDR, obturateur</th><td>Réglages de l&#x27;image : le gain éclaircit l&#x27;image mais ajoute du bruit, le WDR équilibre les zones sombres et claires, l&#x27;obturateur fixe le temps de pose.</td></tr>
+      <tr id="lx-genetec"><th scope="row">Genetec Security Center</th><td>Logiciel de supervision qui rassemble sur un même écran les images et les alarmes de toutes les caméras d&#x27;un site.</td></tr>
+      <tr id="lx-grafcet"><th scope="row">Grafcet</th><td>Schéma normalisé qui décrit le fonctionnement d&#x27;une machine étape par étape, avec les conditions pour passer d&#x27;une étape à la suivante. Le niveau 1 décrit le fonctionnement en mots, le niveau 2 avec les vrais capteurs et actionneurs. La section Parcours en est un exemple.</td></tr>
+      <tr id="lx-marques"><th scope="row">i-PRO, Hanwha, Axis, Pelco, Ajax</th><td>Fabricants de caméras de surveillance (Ajax : d&#x27;alarmes anti-intrusion).</td></tr>
+      <tr id="lx-ia-embarquee"><th scope="row">IA embarquée</th><td>Intelligence artificielle qui fonctionne directement dans la caméra, sans ordinateur extérieur.</td></tr>
+      <tr id="lx-ihm"><th scope="row">IHM</th><td>Interface homme-machine : l&#x27;écran tactile qui permet à un opérateur de piloter et de surveiller une machine.</td></tr>
+      <tr id="lx-iut"><th scope="row">IUT</th><td>Institut universitaire de technologie : l&#x27;école de l&#x27;université qui prépare au BUT, avec beaucoup de pratique et de projets.</td></tr>
+      <tr id="lx-ladder"><th scope="row">Ladder</th><td>Langage de programmation des automates qui se dessine comme un schéma électrique.</td></tr>
+      <tr id="lx-matlab"><th scope="row">Matlab</th><td>Logiciel de calcul scientifique, utilisé ici pour calculer les réglages de la régulation.</td></tr>
+      <tr id="lx-micro"><th scope="row">Microcontrôleur</th><td>Petite puce programmable qui commande un appareil électronique. L&#x27;ATmega328P équipe les cartes Arduino ; l&#x27;ESP32 communique aussi en Wi-Fi.</td></tr>
+      <tr id="lx-minisumo"><th scope="row">Mini-Sumo</th><td>Compétition de petits robots autonomes qui doivent pousser leur adversaire hors d&#x27;une arène circulaire.</td></tr>
+      <tr id="lx-dotnet"><th scope="row">.NET</th><td>Composant de Windows nécessaire au fonctionnement de certains logiciels.</td></tr>
+      <tr id="lx-onduleur"><th scope="row">Onduleur</th><td>Batterie de secours qui maintient l&#x27;alimentation électrique en cas de coupure de courant.</td></tr>
+      <tr id="lx-oscillo"><th scope="row">Oscilloscope</th><td>Appareil de mesure qui affiche l&#x27;évolution d&#x27;un signal électrique dans le temps.</td></tr>
+      <tr id="lx-aii"><th scope="row">Parcours AII</th><td>La spécialité « Automatisme et informatique industrielle » du BUT GEII : apprendre à programmer et à faire fonctionner seules des machines et des installations industrielles.</td></tr>
+      <tr id="lx-poe"><th scope="row">PoE</th><td>Power over Ethernet : le câble réseau transporte aussi l&#x27;électricité, une seule prise suffit pour alimenter une caméra.</td></tr>
+      <tr id="lx-profinet"><th scope="row">PROFINET, iDevice</th><td>PROFINET : le réseau industriel qui relie automates et équipements. iDevice : un mode où un automate échange directement des données avec un autre.</td></tr>
+      <tr id="lx-perimetrique"><th scope="row">Protection périmétrique</th><td>Détection des intrusions en limite d&#x27;un site : clôtures détectrices, barrières infrarouges, caméras de périmètre.</td></tr>
+      <tr id="lx-nec"><th scope="row">Protocole NEC</th><td>La façon standard de coder les messages des télécommandes infrarouges, comme celles des téléviseurs.</td></tr>
+      <tr id="lx-pytorch"><th scope="row">PyTorch, scikit-learn</th><td>Bibliothèques Python, c&#x27;est-à-dire des blocs de code prêts à l&#x27;emploi, pour créer et entraîner des modèles d&#x27;IA.</td></tr>
+      <tr id="lx-pi"><th scope="row">Régulation PI</th><td>Calcul qui ajuste en permanence une commande, ici la puissance de chauffe, pour atteindre une valeur cible et s&#x27;y maintenir sans la dépasser.</td></tr>
+      <tr id="lx-s7"><th scope="row">S7-1200, ET 200SP</th><td>Modèles d&#x27;automates de la marque Siemens, très répandus dans l&#x27;industrie.</td></tr>
+      <tr id="lx-sae"><th scope="row">SAE</th><td>Situation d&#x27;apprentissage et d&#x27;évaluation : un projet noté, mené en équipe à l&#x27;IUT, qui reproduit une situation professionnelle réelle.</td></tr>
+      <tr id="lx-scl"><th scope="row">SCL</th><td>Langage de programmation des automates Siemens, écrit sous forme de texte, proche des langages informatiques classiques.</td></tr>
+      <tr id="lx-surete"><th scope="row">Sûreté électronique</th><td>L&#x27;ensemble des équipements qui protègent un site contre les intrusions : vidéosurveillance, contrôle d&#x27;accès par badge, alarmes.</td></tr>
+      <tr id="lx-switch"><th scope="row">Switch</th><td>Boîtier réseau qui relie entre eux plusieurs appareils (ordinateurs, caméras) par câble, comme une multiprise pour le réseau.</td></tr>
+      <tr id="lx-synoptique"><th scope="row">Synoptique</th><td>Schéma d&#x27;ensemble qui montre tous les équipements d&#x27;une installation et la façon dont ils sont reliés.</td></tr>
+      <tr id="lx-tia"><th scope="row">TIA Portal</th><td>Le logiciel de Siemens qui sert à programmer les automates et les écrans de commande.</td></tr>
+      <tr id="lx-udp"><th scope="row">UDP</th><td>Façon simple et rapide d&#x27;envoyer des messages sur un réseau, sans accusé de réception.</td></tr>
+      <tr id="lx-vlan"><th scope="row">VLAN</th><td>Réseau virtuel : sépare les appareils d&#x27;un même réseau physique en groupes isolés, ici les caméras du reste du réseau.</td></tr>
+      <tr id="lx-wave"><th scope="row">WAVE</th><td>Un autre logiciel de supervision vidéo, de la marque Hanwha.</td></tr>
+      <tr id="lx-yolo"><th scope="row">YOLO</th><td>Modèle d&#x27;IA de détection d&#x27;objets très connu, exécuté ici sur un ordinateur plutôt que dans la caméra.</td></tr>
+    </tbody>
+  </table>
+  <p class="aucun" id="aucun" hidden>Aucun terme ne correspond.</p>
+</section>
+</main>
+
+<footer>
+  <span>François Helaudais, 2026</span>
+  <span>Lettrage : osifont (ISO 3098). Texte : B612.</span>
+</footer>
+
+</div>
+<script>
+/* Onglets des compétences GEII. Sans JavaScript, tous les panneaux restent visibles. */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.onglet'));
+  if (!tabs.length) return;
+  function ouvrir(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      ouvrir(t);
+      history.replaceState(null, '', '#' + t.getAttribute('aria-controls'));
+    });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key, j = null;
+      if (k === 'ArrowRight' || k === 'ArrowDown') j = (i + 1) % tabs.length;
+      else if (k === 'ArrowLeft' || k === 'ArrowUp') j = (i - 1 + tabs.length) % tabs.length;
+      else if (k === 'Home') j = 0;
+      else if (k === 'End') j = tabs.length - 1;
+      if (j !== null) { e.preventDefault(); ouvrir(tabs[j], true); }
+    });
+  });
+  // Lien vers une compétence (#but-concevoir…) : ouvre l'onglet et amène la section à l'écran
+  function depuisAncre() {
+    var id = location.hash.slice(1);
+    var tab = tabs.filter(function (t) { return t.getAttribute('aria-controls') === id; })[0];
+    if (!tab) return false;
+    ouvrir(tab);
+    document.getElementById('geii').scrollIntoView();
+    return true;
+  }
+  if (!depuisAncre()) ouvrir(tabs[0]);
+  window.addEventListener('hashchange', depuisAncre);
+})();
+</script>
+<script>
+/* Termes techniques : bulle d'explication au survol ou au clic. Sans JavaScript, le lien mène à la page Lexique. */
+(function () {
+  var termes = document.querySelectorAll('a.terme');
+  if (!termes.length) return;
+  var bulle = document.createElement('div');
+  bulle.className = 'bulle-def'; bulle.id = 'bulle-def'; bulle.setAttribute('role', 'tooltip'); bulle.hidden = true;
+  document.body.appendChild(bulle);
+  var actif = null, fige = false, survol = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function fermer() {
+    if (actif) { actif.setAttribute('aria-expanded', 'false'); actif.removeAttribute('aria-describedby'); }
+    actif = null; fige = false; bulle.hidden = true;
+  }
+  function ouvrir(a) {
+    if (actif && actif !== a) fermer();
+    actif = a;
+    bulle.innerHTML = '';
+    var b = document.createElement('b'); b.textContent = a.getAttribute('data-nom') || a.textContent;
+    var p = document.createElement('span'); p.textContent = a.getAttribute('data-def');
+    var l = document.createElement('a'); l.href = 'lexique.html'; l.textContent = 'Tout le lexique';
+    l.addEventListener('click', fermer);
+    bulle.appendChild(b); bulle.appendChild(p); bulle.appendChild(document.createElement('br')); bulle.appendChild(l);
+    bulle.hidden = false;
+    a.setAttribute('aria-expanded', 'true'); a.setAttribute('aria-describedby', 'bulle-def');
+    var r = a.getBoundingClientRect(), w = bulle.offsetWidth, h = bulle.offsetHeight;
+    var x = Math.min(Math.max(16, r.left + window.scrollX), window.scrollX + document.documentElement.clientWidth - w - 16);
+    var y = r.bottom + window.scrollY + 8;
+    if (r.bottom + h + 16 > window.innerHeight && r.top > h + 16) y = r.top + window.scrollY - h - 8;
+    bulle.style.left = x + 'px'; bulle.style.top = y + 'px';
+  }
+  Array.prototype.forEach.call(termes, function (a) {
+    a.setAttribute('aria-expanded', 'false');
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (actif === a && fige) { fermer(); return; }
+      ouvrir(a); fige = true;
+    });
+    if (survol) {
+      a.addEventListener('mouseenter', function () { if (!fige) ouvrir(a); });
+      a.addEventListener('mouseleave', function () { if (!fige && actif === a) fermer(); });
+    }
+    a.addEventListener('focus', function () { if (!fige) ouvrir(a); });
+    a.addEventListener('blur', function () { setTimeout(function () { if (!fige && actif === a && !bulle.contains(document.activeElement)) fermer(); }, 0); });
+  });
+  document.addEventListener('click', function (e) { if (actif && !bulle.contains(e.target) && !e.target.closest('a.terme')) fermer(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && actif) { var a = actif; fermer(); a.focus(); } });
+  window.addEventListener('resize', fermer);
+})();
+</script>
+<script>
+/* Filtre du lexique */
+(function () {
+  var champ = document.getElementById('filtre'), lignes = document.querySelectorAll('.lexique tbody tr'), aucun = document.getElementById('aucun');
+  function norm(s) { return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+  champ.addEventListener('input', function () {
+    var q = norm(champ.value.trim()), n = 0;
+    Array.prototype.forEach.call(lignes, function (tr) {
+      var ok = !q || norm(tr.textContent).indexOf(q) !== -1;
+      tr.hidden = !ok; if (ok) n++;
+    });
+    aucun.hidden = n > 0;
+  });
+})();
+</script>
+</body>
+</html>
